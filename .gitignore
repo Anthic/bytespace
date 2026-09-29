@@ -45,4 +45,5 @@ next-env.d.ts
 .workflow/shots/ref/
 .env*
 .prompts
-
+.agent
+.workflow
