@@ -1,9 +1,9 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# AGENTS.md — entry point for every AI agent
 
-# This is NOT the Next.js you know
+Project: **ByteSpace New** landing page (frontend only, Next.js + Tailwind + GSAP + Lenis).
+Main priorities, in order: 1) pixel-perfect design  2) smooth GSAP animation  3) responsive at sm/lg/xl/xxl  4) clean reusable code.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
+Before writing ANY code:
+1. Read every file in `.agent/` (rules you must obey).
+2. Follow `.workflow/00-master-workflow.md` (how you work, step by step).
+3. Never claim a section is "done" until `.workflow/04-visual-verification.md` and `.workflow/05-responsive-test.md` pass.

@@ -1,0 +1,11 @@
+# Pixel-perfect rules
+- Match font family, weight, size, line-height, letter-spacing EXACTLY. Load fonts with `next/font` (Google) or `next/font/local`.
+- Match spacing (padding, margin, gap), radii, borders, shadows, opacity, gradients EXACTLY. Use Tailwind arbitrary values (`px-[27px]`) when the token scale doesn't match. Accuracy beats tidiness.
+- Container: match the Figma content width and side padding at each breakpoint.
+- Colors only through tokens in `globals.css` (`--color-*`). No raw hex inside components.
+- Images: use `next/image` with width/height or `fill` + `sizes`; keep aspect ratio identical to Figma; no layout shift.
+- Icons: inline SVG components or `<Image>`; color via `currentColor` where possible.
+- Alignment: check optical alignment against the Figma screenshot, not by eye alone.
+- Tolerance: ±1px on dimensions and positions at the Figma frame widths. Anything more is a bug.
+- Hover / focus / active states: build them (Figma variants if present, otherwise subtle sensible defaults) and note it.
+- No horizontal scroll at any width. No text overflow/clipping.
