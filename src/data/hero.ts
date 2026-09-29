@@ -49,7 +49,7 @@ export const heroContent: HeroData = {
   },
   navigation: [
     { label: "Home", href: "/", active: true },
-    { label: "Courses", href: "#courses" },
+    { label: "Courses", href: "/search" },
     { label: "Creators", href: "#creators" },
   ],
   authLinks: {
