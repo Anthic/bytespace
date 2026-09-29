@@ -25,4 +25,6 @@
 ## Section log
 | section | node ids | status | deviations |
 |---------|----------|--------|-----------|
-| Hero / Banner | `1:1695` | In progress | Extrapolated mobile responsive layout from 1440px frame |
+| Hero / Banner | `1:1695` | Completed | 1. Extrapolated responsive mobile layout for `< xl` as Figma provided the 1440px desktop frame. 2. Filter drop-shadow used on character PNG to preserve silhouette transparency. 3. Hero person lifted 2% higher per user instruction. |
+| Logo Partner | `1:1794` | Completed | Added responsive wrap for small screens with exact 72px gap on desktop, `#f5f5f6` bg, and GSAP scroll entrance. |
+| Popular Courses | `12:101` to `33:683` | Completed | Complete section from "Discover Your Passion, Build Your Skills" to 3 rows of interactive category filter pills, through to the 3x2 course cards grid (6 cards). Fully responsive with 1 col (mobile), 2 cols (tablet), 3 cols (desktop). |
