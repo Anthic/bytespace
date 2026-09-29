@@ -13,6 +13,8 @@
   --color-heading-dark: #040819;
   --color-text-body: #4f4f4f;
   --color-pill-text: #4b4c53;
+  --color-offwhite: #fafafa;
+  --color-bright-lime: #cbfc01;
 
   --font-poppins: var(--font-poppins), sans-serif;
   --font-satoshi: "Satoshi", system-ui, -apple-system, sans-serif;
