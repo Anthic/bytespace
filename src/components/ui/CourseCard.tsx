@@ -1,16 +1,23 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { CourseItem } from "@/src/data/courses";
 
 interface CourseCardProps {
   course: CourseItem;
   className?: string;
+  href?: string;
 }
 
-export function CourseCard({ course, className = "" }: CourseCardProps) {
+export function CourseCard({
+  course,
+  className = "",
+  href = "/course-details",
+}: CourseCardProps) {
   return (
-    <article
-      className={`group bg-white border border-card-border rounded-[24px] p-[15px] flex flex-col justify-between w-full max-w-[373px] h-[384px] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] cursor-pointer ${className}`}
+    <Link
+      href={href}
+      className={`group block bg-white border border-card-border rounded-[24px] p-[15px] flex flex-col justify-between w-full max-w-[373px] h-[384px] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] cursor-pointer text-left ${className}`}
       data-name="Course_Card_1"
     >
       {/* 1. Thumbnail Container */}
@@ -126,6 +133,6 @@ export function CourseCard({ course, className = "" }: CourseCardProps) {
           </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
