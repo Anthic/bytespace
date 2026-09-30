@@ -50,7 +50,7 @@ export const heroContent: HeroData = {
   navigation: [
     { label: "Home", href: "/", active: true },
     { label: "Courses", href: "/search" },
-    { label: "Creators", href: "#creators" },
+    { label: "Creators", href: "/creator-profile" },
   ],
   authLinks: {
     signIn: { label: "Sign In", href: "/login" },

@@ -137,7 +137,7 @@ export function CourseDetailsPage() {
             >
               <span>{courseDetailsData.instructor.prefix}</span>
               <Link
-                href="#profile"
+                href="/creator-profile"
                 className="text-electric-lime font-medium hover:underline"
               >
                 {courseDetailsData.instructor.name}
@@ -847,7 +847,7 @@ export function CourseDetailsPage() {
                 </p>
 
                 <Link
-                  href="#profile"
+                  href="/creator-profile"
                   className="w-fit border border-[#ced0d3] hover:border-dark px-[16px] py-[8px] rounded-[24px] font-['Satoshi',sans-serif] font-medium text-[15px] text-pill-text hover:text-dark transition-colors inline-flex items-center justify-center"
                   data-node-id="55:4256"
                 >
