@@ -268,91 +268,248 @@ export function CourseDetailsPage() {
                 })}
               </div>
 
-              {/* Description Section (Node 55:4125) */}
-              <div
-                className="mt-[32px] sm:mt-[40px] flex flex-col gap-[20px] sm:gap-[24px]"
-                data-node-id="55:4125"
-              >
-                <h2
-                  className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-dark tracking-[-0.2px] leading-[1.2]"
-                  data-node-id="55:4126"
-                >
-                  Description
-                </h2>
+              {/* Conditional Content based on active tab */}
+              {activeTab === "About" && (
                 <div
-                  className="font-['Satoshi',sans-serif] text-[16px] text-pill-text leading-[1.6] flex flex-col gap-[16px] max-w-[723px]"
-                  data-node-id="55:4127"
+                  className="mt-[32px] sm:mt-[40px] flex flex-col gap-[20px] sm:gap-[24px]"
+                  data-node-id="55:4125"
                 >
-                  {courseDetailsData.description.map((paragraph, idx) => (
-                    <p key={idx}>{paragraph}</p>
-                  ))}
-                </div>
-
-                {/* Sneak Peak Section (Node 55:4128) */}
-                <div className="mt-[16px] flex flex-col gap-[20px]">
                   <h2
                     className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-dark tracking-[-0.2px] leading-[1.2]"
-                    data-node-id="55:4128"
+                    data-node-id="55:4126"
                   >
-                    Sneak Peak
+                    Description
                   </h2>
                   <div
-                    className="grid grid-cols-2 sm:grid-cols-4 gap-[12px] sm:gap-[16px] w-full max-w-[725px]"
-                    data-node-id="55:4129"
+                    className="font-['Satoshi',sans-serif] text-[16px] text-pill-text leading-[1.6] flex flex-col gap-[16px] max-w-[723px]"
+                    data-node-id="55:4127"
                   >
-                    {courseDetailsData.sneakPeakImages.map((src, idx) => (
-                      <div
-                        key={idx}
-                        className="relative w-full h-[120px] sm:h-[125px] rounded-[16px] overflow-hidden bg-[#d9d9d9] shadow-sm hover:scale-105 transition-transform duration-300"
-                        data-node-id={`55:413${idx}`}
-                      >
-                        <Image
-                          src={src}
-                          alt={`Sneak peak ${idx + 1}`}
-                          fill
-                          sizes="(max-width: 640px) 50vw, 167px"
-                          className="object-cover"
-                        />
-                      </div>
+                    {courseDetailsData.description.map((paragraph, idx) => (
+                      <p key={idx}>{paragraph}</p>
                     ))}
                   </div>
-                </div>
 
-                {/* Key Points Section (Node 55:4134) */}
-                <div className="mt-[16px] flex flex-col gap-[20px]">
-                  <h2
-                    className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-dark tracking-[-0.2px] leading-[1.2]"
-                    data-node-id="55:4134"
-                  >
-                    Key Points
-                  </h2>
-                  <div
-                    className="flex flex-col gap-[12px]"
-                    data-node-id="55:4135"
-                  >
-                    {courseDetailsData.keyPoints.map((point, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-[10px]"
-                        data-node-id={`55:413${idx + 6}`}
-                      >
-                        <div className="w-[24px] h-[24px] shrink-0 relative flex items-center justify-center">
+                  {/* Sneak Peak Section (Node 55:4128) */}
+                  <div className="mt-[16px] flex flex-col gap-[20px]">
+                    <h2
+                      className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-dark tracking-[-0.2px] leading-[1.2]"
+                      data-node-id="55:4128"
+                    >
+                      Sneak Peak
+                    </h2>
+                    <div
+                      className="grid grid-cols-2 sm:grid-cols-4 gap-[12px] sm:gap-[16px] w-full max-w-[725px]"
+                      data-node-id="55:4129"
+                    >
+                      {courseDetailsData.sneakPeakImages.map((src, idx) => (
+                        <div
+                          key={idx}
+                          className="relative w-full h-[120px] sm:h-[125px] rounded-[16px] overflow-hidden bg-[#d9d9d9] shadow-sm hover:scale-105 transition-transform duration-300"
+                          data-node-id={`55:413${idx}`}
+                        >
                           <Image
-                            src="/icons/course-details/check-circle.svg"
-                            alt="Check"
-                            width={24}
-                            height={24}
-                            className="w-[20px] h-[20px] object-contain"
+                            src={src}
+                            alt={`Sneak peak ${idx + 1}`}
+                            fill
+                            sizes="(max-width: 640px) 50vw, 167px"
+                            className="object-cover"
                           />
                         </div>
-                        <span className="font-['Satoshi',sans-serif] text-[16px] text-pill-text leading-[1.6]">
-                          {point}
-                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Key Points Section (Node 55:4134) */}
+                  <div className="mt-[16px] flex flex-col gap-[20px]">
+                    <h2
+                      className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-dark tracking-[-0.2px] leading-[1.2]"
+                      data-node-id="55:4134"
+                    >
+                      Key Points
+                    </h2>
+                    <div
+                      className="flex flex-col gap-[12px]"
+                      data-node-id="55:4135"
+                    >
+                      {courseDetailsData.keyPoints.map((point, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-[10px]"
+                          data-node-id={`55:413${idx + 6}`}
+                        >
+                          <div className="w-[24px] h-[24px] shrink-0 relative flex items-center justify-center">
+                            <Image
+                              src="/icons/course-details/check-circle.svg"
+                              alt="Check"
+                              width={24}
+                              height={24}
+                              className="w-[20px] h-[20px] object-contain"
+                            />
+                          </div>
+                          <span className="font-['Satoshi',sans-serif] text-[16px] text-pill-text leading-[1.6]">
+                            {point}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Lesson Tab Content (Node 60:624) */}
+              {activeTab === "Lesson" && (
+                <div
+                  className="mt-[32px] sm:mt-[40px] flex flex-col gap-[24px] items-start"
+                  data-node-id="60:624"
+                  data-name="Lesson Tab Content"
+                >
+                  {/* Explore the Modules */}
+                  <h2
+                    className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2]"
+                    data-node-id="60:625"
+                  >
+                    {courseDetailsData.lessonTabContent.exploreModules.title}
+                  </h2>
+                  <p
+                    className="font-['Satoshi',sans-serif] text-[16px] text-[#4b4c53] leading-[1.6] max-w-[723px]"
+                    data-node-id="60:626"
+                  >
+                    {courseDetailsData.lessonTabContent.exploreModules.description}
+                  </p>
+
+                  {/* Lesson List */}
+                  <h2
+                    className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2] pt-[8px]"
+                    data-node-id="60:627"
+                  >
+                    {courseDetailsData.lessonTabContent.lessonList.title}
+                  </h2>
+
+                  <div className="flex flex-col gap-[20px] sm:gap-[24px] w-full max-w-[723px]">
+                    {courseDetailsData.lessonTabContent.lessonList.modules.map((mod) => (
+                      <div
+                        key={mod.id}
+                        className="flex items-start sm:items-center gap-[13px]"
+                      >
+                        {/* Outlined Videocam Icon Box (Node 60:629 / 60:630) */}
+                        <div
+                          className="bg-[#d4fb20] shrink-0 w-[64px] h-[64px] sm:w-[72px] sm:h-[72px] rounded-[20px] sm:rounded-[24px] flex items-center justify-center p-[12px] sm:p-[16px] shadow-xs"
+                          data-name="Videocam Icon Box"
+                        >
+                          <div className="w-[36px] sm:w-[40px] h-[36px] sm:h-[40px] relative flex items-center justify-center">
+                            <Image
+                              src="/icons/course-details/videocam.svg"
+                              alt="Lesson video"
+                              width={40}
+                              height={40}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Title & Description (Node 60:631) */}
+                        <div className="flex flex-col gap-[4px] flex-1">
+                          <h3 className="font-['Satoshi',sans-serif] font-medium text-[16px] text-[#242528] leading-[1.2]">
+                            {mod.title}
+                          </h3>
+                          <p className="font-['Satoshi',sans-serif] text-[16px] text-[#4b4c53] leading-[1.6]">
+                            {mod.description}
+                          </p>
+                        </div>
                       </div>
                     ))}
                   </div>
+
+                  {/* Lesson Content (Node 60:664) */}
+                  <h2
+                    className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2] pt-[8px]"
+                    data-node-id="60:664"
+                  >
+                    {courseDetailsData.lessonTabContent.lessonContent.title}
+                  </h2>
+                  <p
+                    className="font-['Satoshi',sans-serif] text-[16px] text-[#4b4c53] leading-[1.6] max-w-[723px]"
+                    data-node-id="60:665"
+                  >
+                    {courseDetailsData.lessonTabContent.lessonContent.description}
+                  </p>
+
+                  {/* Lesson Progress Tracking (Node 60:666) */}
+                  <h2
+                    className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2] pt-[8px]"
+                    data-node-id="60:666"
+                  >
+                    {courseDetailsData.lessonTabContent.progressTracking.title}
+                  </h2>
+                  <p
+                    className="font-['Satoshi',sans-serif] text-[16px] text-[#4b4c53] leading-[1.6] max-w-[723px]"
+                    data-node-id="60:667"
+                  >
+                    {courseDetailsData.lessonTabContent.progressTracking.description}
+                  </p>
+
+                  {/* Progress Card (Node 60:668) */}
+                  <div
+                    className="backdrop-blur-[10px] bg-white border border-[#ced0d3] flex flex-col gap-[8px] p-[16px] rounded-[16px] w-full max-w-[723px] shadow-xs"
+                    data-node-id="60:668"
+                  >
+                    <span
+                      className="font-['Satoshi',sans-serif] font-medium text-[#242528] text-[14px] leading-[1.2]"
+                      data-node-id="60:669"
+                    >
+                      {courseDetailsData.lessonTabContent.progressTracking.label}
+                    </span>
+                    <span
+                      className="font-['Poppins',var(--font-poppins)] font-semibold text-[#242528] text-[36px] tracking-[-0.36px] leading-[1.2]"
+                      data-node-id="60:671"
+                    >
+                      {courseDetailsData.lessonTabContent.progressTracking.percentage}%
+                    </span>
+                    <div
+                      className="w-full h-[8px] bg-[#e5e6e8] rounded-[24px] overflow-hidden relative"
+                      data-node-id="60:672"
+                    >
+                      <div
+                        className="h-full bg-[#d4fb20] rounded-[24px] transition-all duration-500 ease-out"
+                        style={{
+                          width: `${courseDetailsData.lessonTabContent.progressTracking.percentage}%`,
+                        }}
+                        data-node-id="60:674"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {/* Reviews Tab Content */}
+              {activeTab === "Reviews" && (
+                <div
+                  className="mt-[32px] sm:mt-[40px] flex flex-col gap-[24px] max-w-[723px]"
+                  data-name="Reviews Tab Content"
+                >
+                  <h2 className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-dark tracking-[-0.2px] leading-[1.2]">
+                    Student Reviews
+                  </h2>
+                  <div className="flex items-center gap-[16px] p-[20px] rounded-[16px] bg-[#f5f5f6] border border-[#ced0d3]">
+                    <div className="text-center pr-4 border-r border-[#ced0d3]">
+                      <span className="font-['Poppins',var(--font-poppins)] font-bold text-[36px] text-dark leading-none">
+                        4.8
+                      </span>
+                      <p className="font-['Satoshi',sans-serif] text-[13px] text-[#4b4c53] mt-1">
+                        out of 5
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <div className="flex items-center gap-1 text-electric-lime">
+                        {"★".repeat(5)}
+                      </div>
+                      <p className="font-['Satoshi',sans-serif] text-[15px] text-[#4b4c53]">
+                        Based on 172 verified student ratings
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
