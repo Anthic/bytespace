@@ -21,97 +21,75 @@ export function FeaturesHighlight() {
         return;
       }
 
-      // Block 1 animations
       gsap.fromTo(
         ".feat-block-1-text",
-        { autoAlpha: 0, x: -30 },
+        { opacity: 0, x: -30 },
         {
-          autoAlpha: 1,
+          opacity: 1,
           x: 0,
           duration: 0.7,
           ease: "power2.out",
+          force3D: true,
           scrollTrigger: {
             trigger: block1Ref.current,
             start: "top 80%",
             once: true,
           },
-          immediateRender: false,
         }
       );
 
       gsap.fromTo(
         ".feat-block-1-visual",
-        { autoAlpha: 0, x: 30, scale: 0.98 },
+        { opacity: 0, x: 30, scale: 0.98 },
         {
-          autoAlpha: 1,
+          opacity: 1,
           x: 0,
           scale: 1,
           duration: 0.8,
           ease: "power2.out",
+          force3D: true,
           scrollTrigger: {
             trigger: block1Ref.current,
             start: "top 80%",
             once: true,
           },
-          immediateRender: false,
         }
       );
 
-      // Block 2 animations
       gsap.fromTo(
         ".feat-block-2-visual",
-        { autoAlpha: 0, x: -30, scale: 0.98 },
+        { opacity: 0, x: -30, scale: 0.98 },
         {
-          autoAlpha: 1,
+          opacity: 1,
           x: 0,
           scale: 1,
           duration: 0.8,
           ease: "power2.out",
+          force3D: true,
           scrollTrigger: {
             trigger: block2Ref.current,
             start: "top 80%",
             once: true,
           },
-          immediateRender: false,
         }
       );
 
       gsap.fromTo(
         ".feat-block-2-text",
-        { autoAlpha: 0, x: 30 },
+        { opacity: 0, x: 30 },
         {
-          autoAlpha: 1,
+          opacity: 1,
           x: 0,
           duration: 0.7,
           ease: "power2.out",
+          force3D: true,
           scrollTrigger: {
             trigger: block2Ref.current,
             start: "top 80%",
             once: true,
           },
-          immediateRender: false,
         }
       );
-
-      // Floating micro-motion on cards
-      gsap.to(".floating-feat-card", {
-        y: "-=6",
-        duration: 3.2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        stagger: 0.4,
-      });
-
-      // Subtle float on 3D ornaments
-      gsap.to(".floating-feat-spiral", {
-        rotate: 4,
-        y: "-=8",
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
     },
     { scope: sectionRef }
   );
@@ -123,7 +101,7 @@ export function FeaturesHighlight() {
       aria-label="Features & Capabilities"
       data-node-id="34:1159"
     >
-      {/* Background Ambient Glows from Figma (Group 5 & Ellipse 12) */}
+
       <div className="absolute top-[-466px] left-[calc(50%-1228px)] w-[2456px] h-[2391px] pointer-events-none select-none z-0">
         <Image
           src="/images/features/figma-group5.svg"
@@ -145,15 +123,13 @@ export function FeaturesHighlight() {
       </div>
 
       <div className="relative z-10 w-full max-w-[1440px] px-6 sm:px-10 lg:px-12 flex flex-col gap-[80px] lg:gap-[120px] items-center">
-        {/* ============================================================== */}
-        {/* BLOCK 1: Your Path to Professional Growth Starts Here!        */}
-        {/* ============================================================== */}
+
         <div
           ref={block1Ref}
           className="w-full flex flex-col lg:flex-row items-center justify-between gap-[48px] lg:gap-[63px]"
           data-node-id="34:1157"
         >
-          {/* Left Text & Stats */}
+
           <div className="feat-block-1-text w-full lg:w-[574px] flex flex-col items-start text-left">
             <h2
               className="font-['Poppins',var(--font-poppins)] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.2] text-dark tracking-[-0.44px] max-w-[577px]"
@@ -168,7 +144,6 @@ export function FeaturesHighlight() {
               {featuresData.growth.description}
             </p>
 
-            {/* Stats row */}
             <div
               className="mt-8 sm:mt-10 flex items-end gap-[40px] sm:gap-[56px] whitespace-nowrap"
               data-node-id="34:773"
@@ -186,11 +161,10 @@ export function FeaturesHighlight() {
             </div>
           </div>
 
-          {/* Right Visual Composition (Desktop 621px x 552px) */}
           <div className="feat-block-1-visual w-full max-w-[621px] flex justify-center">
-            {/* Desktop Composition Frame (scaled on mobile) */}
+
             <div className="relative w-[340px] sm:w-[520px] lg:w-[621px] h-[360px] sm:h-[480px] lg:h-[552px] flex-shrink-0">
-              {/* 1. Behind Student: Mini Course Card (z-10) */}
+
               <div className="absolute left-[-20px] sm:left-0 top-0 scale-[0.6] sm:scale-[0.8] lg:scale-100 origin-top-left z-[10] select-none pointer-events-none opacity-90 sm:opacity-100">
                 <CourseCard
                   course={{
@@ -217,7 +191,6 @@ export function FeaturesHighlight() {
                 />
               </div>
 
-              {/* 2. Center: Student Portrait (z-20) */}
               <div className="absolute left-[30px] sm:left-[60px] lg:left-0 top-[20px] sm:top-[12px] w-[300px] sm:w-[460px] lg:w-[577px] h-[320px] sm:h-[460px] lg:h-[540px] z-[20] select-none pointer-events-none">
                 <Image
                   src="/images/features/student-growth.png"
@@ -228,7 +201,6 @@ export function FeaturesHighlight() {
                 />
               </div>
 
-              {/* 3. Learning Progress 55% Badge (z-25) */}
               <div className="floating-feat-card absolute right-0 sm:right-[10px] lg:left-[345px] top-[140px] sm:top-[180px] lg:top-[213px] z-[25] w-[180px] sm:w-[210px] lg:w-[232px] p-[12px] sm:p-[16px] rounded-[16px] bg-white/95 backdrop-blur-[10px] shadow-card-float border border-black/5 flex flex-col gap-[6px] sm:gap-[8px]">
                 <span className="font-['Satoshi',sans-serif] font-medium text-[12px] sm:text-[14px] text-dark leading-[1.2]">
                   {featuresData.growth.learningProgress.label}
@@ -241,7 +213,6 @@ export function FeaturesHighlight() {
                 </div>
               </div>
 
-              {/* 4. On Top: 3D Yellow Spiral Ornament (z-35, overlapping top-right of white progress card) */}
               <div className="floating-feat-spiral absolute right-[-10px] sm:right-[10px] lg:left-[406px] top-[10px] lg:top-[67px] w-[110px] sm:w-[160px] lg:w-[215px] h-[110px] sm:h-[160px] lg:h-[215px] z-[35] pointer-events-none select-none">
                 <Image
                   src="/images/features/spiral-growth-yellow.png"
@@ -255,18 +226,15 @@ export function FeaturesHighlight() {
           </div>
         </div>
 
-        {/* ============================================================== */}
-        {/* BLOCK 2: Create & Manage Courses Easily.                      */}
-        {/* ============================================================== */}
         <div
           ref={block2Ref}
           className="w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-[48px] lg:gap-[79px]"
           data-node-id="34:1158"
         >
-          {/* Left Visual Composition (Desktop 541px x 596px) */}
+
           <div className="feat-block-2-visual w-full max-w-[541px] flex justify-center">
             <div className="relative w-[340px] sm:w-[480px] lg:w-[541px] h-[380px] sm:h-[500px] lg:h-[596px] flex-shrink-0">
-              {/* 1. Behind Instructor: 3D Yellow Spiral Ornament (z-10) */}
+
               <div className="floating-feat-spiral absolute right-[-10px] sm:right-[10px] lg:left-[305px] top-[40px] lg:top-[114px] w-[110px] sm:w-[160px] lg:w-[215px] h-[110px] sm:h-[160px] lg:h-[215px] z-[10] pointer-events-none select-none">
                 <Image
                   src="/images/features/spiral-manage-yellow.png"
@@ -277,7 +245,6 @@ export function FeaturesHighlight() {
                 />
               </div>
 
-              {/* 2. Center: Female Instructor Portrait (z-20) */}
               <div className="absolute left-[30px] sm:left-[50px] lg:left-[28px] top-0 w-[280px] sm:w-[380px] lg:w-[435px] h-[360px] sm:h-[500px] lg:h-[596px] z-[20] select-none pointer-events-none">
                 <Image
                   src="/images/features/instructor-manage.png"
@@ -288,7 +255,6 @@ export function FeaturesHighlight() {
                 />
               </div>
 
-              {/* 3. Floating Revenue Card 1 (Total Revenue) (z-25) */}
               <div className="floating-feat-card absolute left-0 top-[20px] sm:top-[30px] lg:top-[44px] z-[25] w-[160px] sm:w-[200px] lg:w-[232px] p-[10px] sm:p-[14px] lg:p-[16px] rounded-[16px] bg-primary-blue/95 backdrop-blur-[10px] text-white shadow-card-float flex flex-col gap-[6px] sm:gap-[8px]">
                 <div className="flex flex-col">
                   <span className="font-['Satoshi',sans-serif] font-medium text-[13px] sm:text-[15px] lg:text-[16px] text-white leading-[1.2]">
@@ -311,7 +277,6 @@ export function FeaturesHighlight() {
                 </div>
               </div>
 
-              {/* 4. Floating Revenue Card 2 (Year to Date) (z-25) */}
               <div className="floating-feat-card absolute left-0 top-[140px] sm:top-[170px] lg:top-[194px] z-[25] w-[110px] sm:w-[125px] lg:w-[134px] p-[10px] sm:p-[12px] lg:p-[16px] rounded-[16px] bg-primary-blue/95 backdrop-blur-[10px] text-white shadow-card-float flex flex-col gap-[4px] sm:gap-[6px]">
                 <div className="flex flex-col">
                   <span className="font-['Satoshi',sans-serif] font-medium text-[13px] sm:text-[15px] lg:text-[16px] text-white leading-[1.2]">
@@ -329,7 +294,6 @@ export function FeaturesHighlight() {
                 </span>
               </div>
 
-              {/* 5. In Front Bottom-Right: Happy Students Badge (z-30) */}
               <div className="floating-feat-card absolute right-0 sm:right-[10px] lg:left-[283px] top-[270px] sm:top-[350px] lg:top-[413px] z-[30] w-[210px] sm:w-[245px] lg:w-[258px] p-[12px] sm:p-[16px] rounded-[16px] bg-white/95 backdrop-blur-[10px] shadow-card-float border border-black/5 flex flex-col gap-[8px]">
                 <div className="flex flex-col">
                   <span className="font-['Satoshi',sans-serif] font-medium text-[14px] sm:text-[16px] text-dark leading-[1.2]">
@@ -354,7 +318,6 @@ export function FeaturesHighlight() {
                   </div>
                 </div>
 
-                {/* Overlapping Avatars */}
                 <div className="flex items-center">
                   {featuresData.management.happyStudents.avatars.map(
                     (src, idx) => (
@@ -384,7 +347,6 @@ export function FeaturesHighlight() {
             </div>
           </div>
 
-          {/* Right Text & Checklist */}
           <div className="feat-block-2-text w-full lg:w-[580px] flex flex-col items-start text-left">
             <h2
               className="font-['Poppins',var(--font-poppins)] font-semibold text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.2] text-dark tracking-[-0.44px] max-w-[420px]"
@@ -402,7 +364,6 @@ export function FeaturesHighlight() {
               {featuresData.management.description}
             </p>
 
-            {/* Checklist */}
             <div
               className="mt-8 sm:mt-10 flex flex-col gap-[16px] items-start"
               data-node-id="34:902"

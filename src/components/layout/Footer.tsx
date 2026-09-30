@@ -21,11 +21,11 @@ export function Footer() {
       className="relative w-full bg-white border-t border-card-border overflow-hidden select-none"
     >
       <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-0 pt-[60px] sm:pt-[71px] pb-[40px] sm:pb-[56px] flex flex-col gap-[60px] lg:gap-[130px]">
-        {/* Top Navigation & Newsletter (Figma Node 34:1258) */}
+
         <div className="flex flex-col lg:flex-row items-start justify-between gap-[48px] lg:gap-[92px]">
-          {/* Brand & Newsletter Column (Figma Node 34:1259) */}
+
           <div className="flex flex-col gap-[36px] sm:gap-[45px] max-w-[530px] w-full">
-            {/* Logo & Headline */}
+
             <div className="flex flex-col gap-[16px] items-start">
               <Link
                 href="/"
@@ -49,7 +49,6 @@ export function Footer() {
               </p>
             </div>
 
-            {/* Input & Search CTA Form */}
             <div className="flex flex-col gap-[16px] sm:gap-[24px] w-full">
               <form
                 onSubmit={handleSubmit}
@@ -78,7 +77,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Navigation Links Columns (Figma Node 34:1272) */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-[32px] sm:gap-[40px] w-full lg:w-[580px] shrink-0 pt-0 sm:pt-[8px]">
             {footerData.columns.map((col, idx) => (
               <div key={idx} className="flex flex-col gap-[16px]">
@@ -96,7 +94,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Copyright & Legal Links (Figma Node 34:1296) */}
         <div className="flex flex-col gap-[24px] w-full">
           <div className="w-full h-[1px] bg-card-border" />
           <div className="flex flex-col sm:flex-row items-center justify-between gap-[16px] text-dark font-satoshi font-normal text-[12px] leading-[1.6]">

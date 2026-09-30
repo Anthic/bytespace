@@ -14,6 +14,14 @@ export const metadata: Metadata = {
   title: "ByteSpace - Get Access to Hundreds Courses Available",
   description:
     "Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon-192.png",
+  },
 };
 
 export default function RootLayout({

@@ -18,21 +18,20 @@ export function CourseDetailsPage() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [copiedShare, setCopiedShare] = useState(false);
 
-  // Dynamically ensure blue banner extends exactly to the tabs boundary
   React.useEffect(() => {
     const updateBannerHeight = () => {
       if (tabsRef.current && containerRef.current) {
         const tabsRect = tabsRef.current.getBoundingClientRect();
         const containerRect = containerRef.current.getBoundingClientRect();
         const relativeTop = tabsRect.top - containerRect.top;
-        // 8px breathing space above tabs
+
         setBannerHeight(Math.round(relativeTop - 8));
       }
     };
 
     updateBannerHeight();
     window.addEventListener("resize", updateBannerHeight);
-    // Re-check after images/fonts settle
+
     const timer = setTimeout(updateBannerHeight, 300);
     return () => {
       window.removeEventListener("resize", updateBannerHeight);
@@ -40,7 +39,6 @@ export function CourseDetailsPage() {
     };
   }, []);
 
-  // Ensure Lenis and page scroll limit immediately recalculate when switching tabs
   React.useEffect(() => {
     const notifyResize = () => {
       if (typeof window !== "undefined") {
@@ -76,7 +74,6 @@ export function CourseDetailsPage() {
       ).matches;
       if (prefersReducedMotion) return;
 
-      // Animate hero text
       gsap.fromTo(
         heroContentRef.current,
         { autoAlpha: 0, y: 25 },
@@ -93,7 +90,7 @@ export function CourseDetailsPage() {
       data-node-id="55:4066"
       data-name="Course Details"
     >
-      {/* 1. BLUE HERO BANNER (Node 55:4160) - Extends behind the video across all screens */}
+
       <div
         className="absolute top-0 left-0 w-full h-[770px] sm:h-[895px] lg:h-[957px] bg-[#003be2] bg-grid-lines pointer-events-none z-0 transition-[height] duration-200"
         style={bannerHeight ? { height: `${bannerHeight}px` } : undefined}
@@ -101,19 +98,17 @@ export function CourseDetailsPage() {
         data-name="Hero_Banner_Background"
       />
 
-      {/* Reusable Navbar */}
       <div className="relative z-20 w-full">
         <Navbar />
       </div>
 
-      {/* Hero Top Content: Title, Badges, Share (Node 55:4183) */}
       <div
         ref={heroContentRef}
         className="relative z-10 w-full max-w-[1248px] mx-auto px-4 sm:px-6 lg:px-6 pt-[24px] sm:pt-[40px] pb-[32px] sm:pb-[40px] flex flex-col"
         data-node-id="55:4183"
       >
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-[24px]">
-          {/* Title & Author Info (Node 55:4184) */}
+
           <div className="flex flex-col gap-[20px] sm:gap-[24px] max-w-[760px]">
             <div className="flex flex-col gap-[8px]" data-node-id="55:4185">
               <h1
@@ -130,7 +125,6 @@ export function CourseDetailsPage() {
               </p>
             </div>
 
-            {/* Author */}
             <div
               className="font-['Satoshi',sans-serif] text-[16px] sm:text-[18px] text-[#f1f4fe] flex items-center gap-1.5"
               data-node-id="55:4188"
@@ -144,12 +138,11 @@ export function CourseDetailsPage() {
               </Link>
             </div>
 
-            {/* Badges Row (Node 55:4189) */}
             <div
               className="flex flex-wrap items-center gap-[10px] sm:gap-[16px]"
               data-node-id="55:4189"
             >
-              {/* Level Badge */}
+
               <div
                 className="backdrop-blur-[20px] bg-white px-[20px] sm:px-[24px] py-[8px] rounded-[24px] flex items-center gap-[8px] shadow-xs"
                 data-node-id="55:4190"
@@ -166,7 +159,6 @@ export function CourseDetailsPage() {
                 </span>
               </div>
 
-              {/* Rating Reviews Badge */}
               <div
                 className="backdrop-blur-[20px] bg-white px-[20px] sm:px-[24px] py-[8px] rounded-[24px] flex items-center gap-[8px] shadow-xs"
                 data-node-id="55:4193"
@@ -183,7 +175,6 @@ export function CourseDetailsPage() {
                 </span>
               </div>
 
-              {/* Students Badge */}
               <div
                 className="backdrop-blur-[20px] bg-white px-[20px] sm:px-[24px] py-[8px] rounded-[24px] flex items-center gap-[8px] shadow-xs"
                 data-node-id="55:4196"
@@ -202,7 +193,6 @@ export function CourseDetailsPage() {
             </div>
           </div>
 
-          {/* Share Button (Node 55:4199) */}
           <div className="shrink-0 self-start">
             <button
               type="button"
@@ -225,12 +215,11 @@ export function CourseDetailsPage() {
         </div>
       </div>
 
-      {/* 2. MAIN TWO-COLUMN CONTENT: Video (inside blue) + Left Details (in white) & Right Sticky Card */}
       <div className="relative z-10 w-full max-w-[1248px] mx-auto px-4 sm:px-6 lg:px-6 pb-[80px] sm:pb-[120px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[32px] lg:gap-[40px] items-start">
-          {/* LEFT COLUMN (7 of 12 cols, width ~720px) */}
+
           <div className="lg:col-span-7 flex flex-col">
-            {/* Video Preview Box (Node 55:4202) - Sits completely on the Blue Banner with 62px blue space below on desktop */}
+
             <div
               className="relative w-full h-[280px] sm:h-[380px] lg:h-[479px] rounded-[24px] overflow-hidden bg-[#443131] shadow-2xl group flex-shrink-0 mb-[36px] sm:mb-[48px] lg:mb-[62px]"
               data-node-id="55:4202"
@@ -243,7 +232,6 @@ export function CourseDetailsPage() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
 
-              {/* Central Play Button (Node 55:4203) */}
               <button
                 type="button"
                 onClick={() => setIsVideoPlaying(true)}
@@ -263,9 +251,8 @@ export function CourseDetailsPage() {
               </button>
             </div>
 
-            {/* WHITE SECTION CONTENT (Node 55:4116) - Starts right at the white background (y=957px) */}
             <div className="flex flex-col pt-1">
-              {/* Tabs: About, Lessons, Reviews (Node 55:4118) */}
+
               <div
                 ref={tabsRef}
                 className="flex items-center gap-[12px] sm:gap-[16px]"
@@ -290,7 +277,6 @@ export function CourseDetailsPage() {
                 })}
               </div>
 
-              {/* Conditional Content based on active tab */}
               {activeTab === "About" && (
                 <div
                   className="mt-[32px] sm:mt-[40px] flex flex-col gap-[20px] sm:gap-[24px]"
@@ -311,7 +297,6 @@ export function CourseDetailsPage() {
                     ))}
                   </div>
 
-                  {/* Sneak Peak Section (Node 55:4128) */}
                   <div className="mt-[16px] flex flex-col gap-[20px]">
                     <h2
                       className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-dark tracking-[-0.2px] leading-[1.2]"
@@ -341,7 +326,6 @@ export function CourseDetailsPage() {
                     </div>
                   </div>
 
-                  {/* Key Points Section (Node 55:4134) */}
                   <div className="mt-[16px] flex flex-col gap-[20px]">
                     <h2
                       className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-dark tracking-[-0.2px] leading-[1.2]"
@@ -378,14 +362,13 @@ export function CourseDetailsPage() {
                 </div>
               )}
 
-              {/* Lesson Tab Content (Node 60:624) */}
               {activeTab === "Lesson" && (
                 <div
                   className="mt-[32px] sm:mt-[40px] flex flex-col gap-[24px] items-start"
                   data-node-id="60:624"
                   data-name="Lesson Tab Content"
                 >
-                  {/* Explore the Modules */}
+
                   <h2
                     className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2]"
                     data-node-id="60:625"
@@ -399,7 +382,6 @@ export function CourseDetailsPage() {
                     {courseDetailsData.lessonTabContent.exploreModules.description}
                   </p>
 
-                  {/* Lesson List */}
                   <h2
                     className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2] pt-[8px]"
                     data-node-id="60:627"
@@ -413,7 +395,7 @@ export function CourseDetailsPage() {
                         key={mod.id}
                         className="flex items-start sm:items-center gap-[13px]"
                       >
-                        {/* Outlined Videocam Icon Box (Node 60:629 / 60:630) */}
+
                         <div
                           className="bg-[#d4fb20] shrink-0 w-[64px] h-[64px] sm:w-[72px] sm:h-[72px] rounded-[20px] sm:rounded-[24px] flex items-center justify-center p-[12px] sm:p-[16px] shadow-xs"
                           data-name="Videocam Icon Box"
@@ -429,7 +411,6 @@ export function CourseDetailsPage() {
                           </div>
                         </div>
 
-                        {/* Title & Description (Node 60:631) */}
                         <div className="flex flex-col gap-[4px] flex-1">
                           <h3 className="font-['Satoshi',sans-serif] font-medium text-[16px] text-[#242528] leading-[1.2]">
                             {mod.title}
@@ -442,7 +423,6 @@ export function CourseDetailsPage() {
                     ))}
                   </div>
 
-                  {/* Lesson Content (Node 60:664) */}
                   <h2
                     className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2] pt-[8px]"
                     data-node-id="60:664"
@@ -456,7 +436,6 @@ export function CourseDetailsPage() {
                     {courseDetailsData.lessonTabContent.lessonContent.description}
                   </p>
 
-                  {/* Lesson Progress Tracking (Node 60:666) */}
                   <h2
                     className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2] pt-[8px]"
                     data-node-id="60:666"
@@ -470,7 +449,6 @@ export function CourseDetailsPage() {
                     {courseDetailsData.lessonTabContent.progressTracking.description}
                   </p>
 
-                  {/* Progress Card (Node 60:668) */}
                   <div
                     className="backdrop-blur-[10px] bg-white border border-[#ced0d3] flex flex-col gap-[8px] p-[16px] rounded-[16px] w-full max-w-[723px] shadow-xs"
                     data-node-id="60:668"
@@ -503,14 +481,13 @@ export function CourseDetailsPage() {
                 </div>
               )}
 
-              {/* Reviews Tab Content (Node 60:1291) */}
               {activeTab === "Reviews" && (
                 <div
                   className="mt-[32px] sm:mt-[40px] flex flex-col gap-[24px] items-start"
                   data-node-id="60:1291"
                   data-name="Reviews Tab Content"
                 >
-                  {/* Heading: What Learners Are Saying */}
+
                   <h2
                     className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2]"
                     data-node-id="60:1292"
@@ -524,12 +501,11 @@ export function CourseDetailsPage() {
                     {courseDetailsData.reviewsTabContent.description}
                   </p>
 
-                  {/* Ratings Overview Card (Node 60:1294) */}
                   <div
                     className="backdrop-blur-[10px] bg-white border border-[#ced0d3] border-solid flex flex-col sm:flex-row items-center gap-[24px] p-[24px] sm:p-[40px] rounded-[16px] w-full max-w-[723px] shadow-xs"
                     data-node-id="60:1294"
                   >
-                    {/* Left: Ratings Box (Node 60:1295) */}
+
                     <div
                       className="bg-[#d4fb20] flex flex-col items-center justify-center p-[24px] sm:p-[40px] rounded-[8px] shrink-0 text-[#242528] w-full sm:w-[136px] sm:h-[136px]"
                       data-node-id="60:1295"
@@ -548,7 +524,6 @@ export function CourseDetailsPage() {
                       </span>
                     </div>
 
-                    {/* Right: Breakdown Rows (Node 60:1298) */}
                     <div
                       className="flex flex-col gap-[8px] sm:gap-[6px] w-full flex-1"
                       data-node-id="60:1298"
@@ -558,7 +533,7 @@ export function CourseDetailsPage() {
                           key={item.stars}
                           className="flex items-center gap-[12px] sm:gap-[16px] w-full"
                         >
-                          {/* Progress Bar */}
+
                           <div className="flex-1 h-[8px] bg-[#e5e6e8] rounded-[24px] overflow-hidden relative">
                             <div
                               className="h-full bg-[#d4fb20] rounded-[24px] transition-all duration-500"
@@ -566,7 +541,6 @@ export function CourseDetailsPage() {
                             />
                           </div>
 
-                          {/* 5 Stars display */}
                           <div className="flex items-center gap-[4px] shrink-0">
                             {[...Array(5)].map((_, i) => (
                               <div
@@ -584,7 +558,6 @@ export function CourseDetailsPage() {
                             ))}
                           </div>
 
-                          {/* Count */}
                           <span className="font-['Satoshi',sans-serif] text-[16px] text-[#4b4c53] text-right w-[40px] shrink-0 leading-[1.6]">
                             {item.count}
                           </span>
@@ -593,7 +566,6 @@ export function CourseDetailsPage() {
                     </div>
                   </div>
 
-                  {/* Individual Reviews Heading (Node 60:1354) */}
                   <h2
                     className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2] pt-[8px]"
                     data-node-id="60:1354"
@@ -601,7 +573,6 @@ export function CourseDetailsPage() {
                     Individual Reviews:
                   </h2>
 
-                  {/* Filter Pills Row (Node 60:1355) */}
                   <div
                     className="flex flex-wrap gap-[12px] sm:gap-[16px] items-center w-full max-w-[723px]"
                     data-node-id="60:1355"
@@ -647,7 +618,6 @@ export function CourseDetailsPage() {
                     })}
                   </div>
 
-                  {/* Review Cards List (Node 60:1373, 60:1389, etc.) */}
                   <div className="flex flex-col gap-[20px] sm:gap-[24px] w-full max-w-[723px]">
                     {courseDetailsData.reviewsTabContent.reviews
                       .filter((rev) =>
@@ -660,7 +630,7 @@ export function CourseDetailsPage() {
                           key={rev.id}
                           className="border border-[#ced0d3] bg-white rounded-[24px] p-[24px] sm:p-[40px] flex flex-col gap-[20px] sm:gap-[24px] shadow-xs"
                         >
-                          {/* Header Row */}
+
                           <div className="flex items-start justify-between gap-[16px] w-full">
                             <div className="flex flex-col gap-[16px] sm:gap-[20px]">
                               <div className="flex items-center gap-[12px]">
@@ -683,7 +653,6 @@ export function CourseDetailsPage() {
                                 </div>
                               </div>
 
-                              {/* Stars */}
                               <div className="flex items-center gap-[4px]">
                                 {[...Array(rev.rating)].map((_, i) => (
                                   <div
@@ -702,13 +671,11 @@ export function CourseDetailsPage() {
                               </div>
                             </div>
 
-                            {/* Date TimeAgo */}
                             <span className="font-['Satoshi',sans-serif] text-[15px] sm:text-[16px] text-[#4b4c53] shrink-0 leading-[1.6]">
                               {rev.timeAgo}
                             </span>
                           </div>
 
-                          {/* Review Content */}
                           <p className="font-['Satoshi',sans-serif] text-[16px] text-[#4b4c53] leading-[1.6]">
                             {rev.content}
                           </p>
@@ -720,13 +687,12 @@ export function CourseDetailsPage() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Sticky Summary, Lessons & Enrollment Card (Node 55:4206) (5 of 12 cols) */}
           <div className="lg:col-span-5 w-full flex justify-center lg:justify-end">
             <aside
               className="w-full max-w-[440px] bg-white border border-[#ced0d3] rounded-[24px] p-[28px] sm:p-[40px] shadow-2xl flex flex-col gap-[24px] sticky top-[24px]"
               data-node-id="55:4206"
             >
-              {/* 1. Lessons Breakdown */}
+
               <div className="flex flex-col gap-[16px]">
                 <h3
                   className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-dark tracking-[-0.2px] leading-[1.2]"
@@ -762,7 +728,6 @@ export function CourseDetailsPage() {
                 </div>
               </div>
 
-              {/* 2. CTA & Pricing Row */}
               <div className="flex flex-col gap-[16px] pt-2">
                 <p className="font-['Satoshi',sans-serif] text-[#4b4c53] text-[16px] leading-[1.5]">
                   {courseDetailsData.callToAction}
@@ -786,7 +751,6 @@ export function CourseDetailsPage() {
                 </button>
               </div>
 
-              {/* 3. Course Inclusions */}
               <div className="flex flex-col gap-[16px] pt-2">
                 <h3
                   className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-dark tracking-[-0.2px] leading-[1.2]"
@@ -816,7 +780,6 @@ export function CourseDetailsPage() {
 
               <div className="w-full h-[1px] bg-[#ced0d3]" />
 
-              {/* 4. Instructor Profile Card */}
               <div
                 id="profile"
                 className="flex flex-col gap-[16px]"
@@ -859,7 +822,6 @@ export function CourseDetailsPage() {
         </div>
       </div>
 
-      {/* Video Modal if clicked */}
       {isVideoPlaying && (
         <div
           role="dialog"
@@ -893,7 +855,6 @@ export function CourseDetailsPage() {
         </div>
       )}
 
-      {/* 3. REUSABLE FOOTER */}
       <Footer />
     </div>
   );

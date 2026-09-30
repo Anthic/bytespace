@@ -23,14 +23,12 @@ export function LoginPage() {
 
       if (prefersReducedMotion) return;
 
-      // Card entrance
       gsap.fromTo(
         ".login-card",
         { autoAlpha: 0, y: 30, scale: 0.98 },
         { autoAlpha: 1, y: 0, scale: 1, duration: 0.8, ease: "power2.out" }
       );
 
-      // Left content entrance
       gsap.fromTo(
         ".login-left-text",
         { autoAlpha: 0, x: -30 },
@@ -51,33 +49,6 @@ export function LoginPage() {
         }
       );
 
-      // Gentle floating animation for 3D elements
-      gsap.to(".login-ornament-1", {
-        y: "-=10",
-        rotation: "+=3",
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      gsap.to(".login-ornament-2", {
-        y: "+=12",
-        rotation: "-=3",
-        duration: 4.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      gsap.to(".login-ornament-3", {
-        y: "-=8",
-        x: "+=5",
-        duration: 3.8,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
     },
     { scope: containerRef }
   );
@@ -88,13 +59,12 @@ export function LoginPage() {
       data-node-id="49:195"
       className="relative w-full min-h-screen bg-primary-blue overflow-x-hidden flex flex-col justify-between py-6 sm:py-8 lg:py-10"
     >
-      {/* 1. Background Grid Pattern - 100% full coverage */}
+
       <div
         className="absolute inset-0 pointer-events-none z-0 w-full h-full bg-grid-lines opacity-100"
         aria-hidden="true"
       />
 
-      {/* 2. Top Header / Brand Logo (Figma node 49:247) */}
       <header className="relative z-20 w-full max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
         <Link
           href="/"
@@ -123,11 +93,10 @@ export function LoginPage() {
         </Link>
       </header>
 
-      {/* 3. Main Center Content (Left Elements + Right Login Card) */}
       <main className="relative z-10 w-full max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-12 py-8 flex flex-col xl:flex-row items-center xl:items-start justify-between gap-[48px] xl:gap-[60px]">
-        {/* ================= LEFT SIDE (Figma node 49:244 + Course Cards + Badges + 3D Ornaments) ================= */}
+
         <div className="flex-1 w-full max-w-[620px] flex flex-col gap-[36px] xl:pt-[16px]">
-          {/* Headline & Subtitle (Figma node 49:244) */}
+
           <div className="flex flex-col gap-[16px] text-left">
             <h2 className="login-left-text font-poppins font-semibold text-[20px] sm:text-[22px] text-light-gray tracking-[-0.2px]">
               Sign in with ease
@@ -138,9 +107,8 @@ export function LoginPage() {
             </p>
           </div>
 
-          {/* Visual Stacking Showcase (Overlapping Course Cards + Floating Badges + 3D Shapes) */}
           <div className="hidden md:block relative w-full h-[540px] select-none">
-            {/* 3D Torus Ring (Figma node 49:185) */}
+
             <div
               className="login-ornament-1 absolute left-[80px] top-[10px] w-[140px] z-30 pointer-events-none"
               style={{ willChange: "transform" }}
@@ -154,9 +122,8 @@ export function LoginPage() {
               />
             </div>
 
-            {/* Back Course Card - Build Digital Asset (Figma node 49:251) */}
             <div className="login-visual-card absolute left-[0px] top-[90px] w-[360px] lg:w-[373px] bg-white border border-card-border rounded-[24px] p-[15px] shadow-[0_12px_36px_rgba(0,0,0,0.08)] z-10">
-              {/* Thumbnail */}
+
               <div className="relative w-full h-[195px] rounded-[12px] overflow-hidden mb-[16px]">
                 <Image
                   src="/images/register/course-back.png"
@@ -164,7 +131,7 @@ export function LoginPage() {
                   fill
                   className="object-cover"
                 />
-                {/* Meta pills on thumbnail */}
+
                 <div className="absolute left-[12px] bottom-[12px] flex items-center gap-[6px]">
                   <span className="backdrop-blur-[4px] bg-[rgba(246,246,246,0.7)] px-[10px] py-[4px] rounded-[24px] font-satoshi font-medium text-[11px] text-dark">
                     17 Lessons
@@ -175,7 +142,6 @@ export function LoginPage() {
                 </div>
               </div>
 
-              {/* Title & Author */}
               <div className="flex flex-col gap-[2px] mb-[14px]">
                 <h3 className="font-poppins font-semibold text-[18px] text-dark tracking-[-0.2px]">
                   Build Digital Asset
@@ -185,7 +151,6 @@ export function LoginPage() {
                 </p>
               </div>
 
-              {/* Bottom Info: Difficulty, Avatars, Price, Rating */}
               <div className="flex items-center justify-between pt-1 border-t border-card-border/40">
                 <div className="flex items-center gap-[8px]">
                   <span className="bg-[#f5f5f6] px-[10px] py-[4px] rounded-[24px] font-satoshi font-medium text-[12px] text-[#4b4c53]">
@@ -223,9 +188,8 @@ export function LoginPage() {
               </div>
             </div>
 
-            {/* Front Course Card - the Power of Big Data (Figma node 49:282) */}
             <div className="login-visual-card absolute left-[110px] lg:left-[125px] top-[0px] w-[360px] lg:w-[373px] bg-white border border-card-border rounded-[24px] p-[15px] shadow-[0_24px_50px_rgba(0,0,0,0.16)] z-20">
-              {/* Thumbnail */}
+
               <div className="relative w-full h-[195px] rounded-[12px] overflow-hidden mb-[16px]">
                 <Image
                   src="/images/register/course-front.png"
@@ -233,7 +197,7 @@ export function LoginPage() {
                   fill
                   className="object-cover"
                 />
-                {/* Meta pills on thumbnail */}
+
                 <div className="absolute left-[12px] bottom-[12px] flex items-center gap-[6px]">
                   <span className="backdrop-blur-[4px] bg-[rgba(246,246,246,0.7)] px-[10px] py-[4px] rounded-[24px] font-satoshi font-medium text-[11px] text-dark">
                     17 Lessons
@@ -247,7 +211,6 @@ export function LoginPage() {
                 </div>
               </div>
 
-              {/* Title & Author */}
               <div className="flex items-start justify-between mb-[14px]">
                 <div className="flex flex-col gap-[2px]">
                   <h3 className="font-poppins font-semibold text-[18px] text-dark tracking-[-0.2px]">
@@ -264,7 +227,6 @@ export function LoginPage() {
                 </div>
               </div>
 
-              {/* Bottom Info: Difficulty, Avatars, Price */}
               <div className="flex items-center justify-between pt-1 border-t border-card-border/40">
                 <div className="flex items-center gap-[8px]">
                   <span className="bg-[#f5f5f6] px-[10px] py-[4px] rounded-[24px] font-satoshi font-medium text-[12px] text-[#4b4c53]">
@@ -302,7 +264,6 @@ export function LoginPage() {
               </div>
             </div>
 
-            {/* Happy Students Floating Badge (Figma node 49:313) */}
             <div className="login-visual-card absolute left-[210px] lg:left-[240px] top-[430px] w-[260px] backdrop-blur-[10px] bg-electric-lime rounded-[16px] p-[16px] shadow-[0_16px_36px_rgba(0,0,0,0.14)] z-30">
               <div className="flex items-center justify-between mb-2">
                 <span className="font-satoshi font-medium text-[16px] text-dark">
@@ -333,7 +294,6 @@ export function LoginPage() {
               </div>
             </div>
 
-            {/* 3D Yellow Pyramid (Figma node 49:190) */}
             <div
               className="login-ornament-2 absolute left-[-30px] top-[380px] w-[188px] z-30 pointer-events-none"
               style={{ willChange: "transform" }}
@@ -347,7 +307,6 @@ export function LoginPage() {
               />
             </div>
 
-            {/* 3D Silver Spiral (Figma node 49:180) */}
             <div
               className="login-ornament-3 absolute left-[390px] lg:left-[430px] top-[300px] w-[160px] z-30 pointer-events-none"
               style={{ willChange: "transform" }}
@@ -365,11 +324,10 @@ export function LoginPage() {
           </div>
         </div>
 
-        {/* ================= RIGHT SIDE: LOGIN FORM (Figma node 49:220) ================= */}
         <div className="login-card w-full max-w-[579px] bg-white rounded-[24px] p-[32px] sm:p-[48px] lg:p-[60px] shadow-[0_24px_64px_rgba(0,0,0,0.18)] flex flex-col justify-between min-h-[640px] lg:h-[784px]">
-          {/* Header & Inputs */}
+
           <div className="flex flex-col gap-[36px] sm:gap-[40px]">
-            {/* Title Area (Figma node 49:223) */}
+
             <div className="flex flex-col items-start">
               <span className="font-satoshi font-normal text-[16px] sm:text-[18px] leading-[1.6] text-primary-blue">
                 Sign In
@@ -379,9 +337,8 @@ export function LoginPage() {
               </h1>
             </div>
 
-            {/* Form Fields (Figma node 49:226) */}
             <form onSubmit={handleSubmit} className="flex flex-col gap-[20px]">
-              {/* Email */}
+
               <div className="flex flex-col gap-[8px] text-left">
                 <label
                   htmlFor="email"
@@ -400,7 +357,6 @@ export function LoginPage() {
                 />
               </div>
 
-              {/* Password */}
               <div className="flex flex-col gap-[8px] text-left">
                 <label
                   htmlFor="password"
@@ -419,7 +375,6 @@ export function LoginPage() {
                 />
               </div>
 
-              {/* Sign In CTA Button (Figma node 49:239) */}
               <div className="pt-2 flex justify-end">
                 <button
                   type="submit"
@@ -431,9 +386,8 @@ export function LoginPage() {
             </form>
           </div>
 
-          {/* Bottom Social Login & Auth Switcher (Figma node 50:362 & 49:241) */}
           <div className="flex flex-col gap-[28px] items-center pt-6">
-            {/* "or" Divider Line (Figma node 50:349) */}
+
             <div className="w-full flex items-center justify-center gap-[12px]">
               <div className="flex-1 h-[1px] bg-[#e5e6e8]" />
               <span className="font-satoshi font-normal text-[16px] text-[#888888] px-2">
@@ -442,9 +396,8 @@ export function LoginPage() {
               <div className="flex-1 h-[1px] bg-[#e5e6e8]" />
             </div>
 
-            {/* Social Login Buttons (Figma node 50:353) */}
             <div className="flex items-center justify-center gap-[16px]">
-              {/* Facebook Button (node 50:354) */}
+
               <button
                 type="button"
                 aria-label="Sign in with Facebook"
@@ -461,7 +414,6 @@ export function LoginPage() {
                 </div>
               </button>
 
-              {/* Google Button (node 50:358) */}
               <button
                 type="button"
                 aria-label="Sign in with Google"
@@ -479,7 +431,6 @@ export function LoginPage() {
               </button>
             </div>
 
-            {/* Auth Switcher (Figma node 49:241) */}
             <div className="flex items-center justify-center gap-1 font-satoshi text-[16px] leading-[1.6]">
               <span className="text-[#888888]">New user?</span>
               <Link
@@ -493,7 +444,6 @@ export function LoginPage() {
         </div>
       </main>
 
-      {/* 4. Bottom Spacing */}
       <div className="h-4" />
     </div>
   );

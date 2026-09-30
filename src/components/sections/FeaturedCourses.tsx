@@ -27,60 +27,57 @@ export function FeaturedCourses() {
         return;
       }
 
-      // Animate header and subtitle
       gsap.fromTo(
         headerRef.current,
-        { autoAlpha: 0, y: 30 },
+        { opacity: 0, y: 30 },
         {
-          autoAlpha: 1,
+          opacity: 1,
           y: 0,
           duration: 0.7,
           ease: "power2.out",
+          force3D: true,
           scrollTrigger: {
             trigger: headerRef.current,
             start: "top 85%",
             once: true,
           },
-          immediateRender: false,
         }
       );
 
-      // Animate category pills
       gsap.fromTo(
         ".category-pill-item",
-        { autoAlpha: 0, y: 15, scale: 0.96 },
+        { opacity: 0, y: 15, scale: 0.96 },
         {
-          autoAlpha: 1,
+          opacity: 1,
           y: 0,
           scale: 1,
           duration: 0.5,
           stagger: 0.03,
           ease: "power2.out",
+          force3D: true,
           scrollTrigger: {
             trigger: pillsRef.current,
             start: "top 85%",
             once: true,
           },
-          immediateRender: false,
         }
       );
 
-      // Animate course cards grid
       gsap.fromTo(
         ".course-card-wrapper",
-        { autoAlpha: 0, y: 35 },
+        { opacity: 0, y: 35 },
         {
-          autoAlpha: 1,
+          opacity: 1,
           y: 0,
           duration: 0.65,
           stagger: 0.1,
           ease: "power2.out",
+          force3D: true,
           scrollTrigger: {
             trigger: cardsGridRef.current,
             start: "top 80%",
             once: true,
           },
-          immediateRender: false,
         }
       );
     },
@@ -95,7 +92,7 @@ export function FeaturedCourses() {
       data-node-id="12:101"
     >
       <div className="w-full max-w-[1440px] px-6 sm:px-10 lg:px-12 flex flex-col items-center">
-        {/* 1. Header Frame (Node 12:101: Frame 3) */}
+
         <div
           ref={headerRef}
           className="flex flex-col items-center text-center max-w-[920px]"
@@ -114,13 +111,12 @@ export function FeaturedCourses() {
           </p>
         </div>
 
-        {/* 2. Category Filter Pills (3 rows in Figma, responsive on smaller viewports) */}
         <div
           ref={pillsRef}
           className="mt-[36px] sm:mt-[42px] w-full flex flex-col items-center gap-[16px]"
           data-name="Tab_Categories_Container"
         >
-          {/* Row 1 (Node 21:33: Tab_Categories) */}
+
           <div
             className="flex flex-wrap items-center justify-center gap-[12px] sm:gap-[16px]"
             data-node-id="21:33"
@@ -145,7 +141,6 @@ export function FeaturedCourses() {
             })}
           </div>
 
-          {/* Row 2 (Node 21:56: Frame 6) */}
           <div
             className="flex flex-wrap items-center justify-center gap-[12px] sm:gap-[16px]"
             data-node-id="21:56"
@@ -170,7 +165,6 @@ export function FeaturedCourses() {
             })}
           </div>
 
-          {/* Row 3 (Node 21:63: Frame 7) */}
           <div
             className="flex flex-wrap items-center justify-center gap-[12px] sm:gap-[16px]"
             data-node-id="21:63"
@@ -198,7 +192,6 @@ export function FeaturedCourses() {
           </div>
         </div>
 
-        {/* 3. Course Cards Grid (Node 33:683: Frame 8, 3 columns x 2 rows, gap 40px) */}
         <div
           ref={cardsGridRef}
           className="mt-[48px] sm:mt-[60px] lg:mt-[72px] w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[32px] lg:gap-[40px] justify-items-center"

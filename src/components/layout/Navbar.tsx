@@ -12,7 +12,7 @@ export function Navbar() {
   return (
     <header className="relative w-full z-40 h-[72px] sm:h-[84px] lg:h-[96px] flex items-center">
       <Container className="flex items-center justify-between">
-        {/* Brand Logo */}
+
         <Link
           href="/"
           className="flex items-center gap-[10px] group transition-transform duration-200 hover:scale-[1.02]"
@@ -32,7 +32,6 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* Center Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-[24px]">
           {heroContent.navigation.map((item) => (
             <Link
@@ -49,7 +48,6 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Right Desktop Actions */}
         <div className="hidden lg:flex items-center gap-[24px]">
           <Link
             href={heroContent.authLinks.signIn.href}
@@ -78,7 +76,6 @@ export function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Hamburger Button */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -110,7 +107,6 @@ export function Navbar() {
         </button>
       </Container>
 
-      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="lg:hidden absolute top-[72px] sm:top-[84px] left-0 w-full bg-primary-blue/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 flex flex-col gap-4 shadow-2xl z-50">
           {heroContent.navigation.map((item) => (

@@ -17,10 +17,10 @@ export function CourseCard({
   return (
     <Link
       href={href}
-      className={`group block bg-white border border-card-border rounded-[24px] p-[15px] flex flex-col justify-between w-full max-w-[373px] h-[384px] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] cursor-pointer text-left ${className}`}
+      className={`group block bg-white border border-card-border rounded-[24px] p-[15px] flex flex-col justify-between w-full max-w-[373px] h-[384px] transition-shadow duration-300 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] cursor-pointer text-left ${className}`}
       data-name="Course_Card_1"
     >
-      {/* 1. Thumbnail Container */}
+
       <div className="relative w-full h-[195px] rounded-[12px] overflow-hidden flex-shrink-0 bg-[#443131]">
         <Image
           src={course.image}
@@ -30,7 +30,6 @@ export function CourseCard({
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
 
-        {/* Badges on bottom of thumbnail */}
         <div className="absolute left-[12px] bottom-[12px] flex items-center gap-[6px] sm:gap-[8px]">
           <span className="backdrop-blur-[4px] bg-[rgba(246,246,246,0.65)] px-[10px] sm:px-[12px] py-[6px] rounded-[24px] text-[11px] sm:text-[12px] font-medium text-text-body leading-[1.2] whitespace-nowrap">
             {course.badgeLessons}
@@ -44,9 +43,8 @@ export function CourseCard({
         </div>
       </div>
 
-      {/* 2. Content Body */}
       <div className="flex flex-col justify-between flex-1 pt-[16px]">
-        {/* Title, Author & Rating */}
+
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col min-w-0 pr-2">
             <h3
@@ -79,9 +77,8 @@ export function CourseCard({
           </div>
         </div>
 
-        {/* Level & Enrolled Avatars */}
         <div className="flex items-center justify-between mt-2">
-          {/* Level Pill */}
+
           <div className="bg-light-gray flex items-center gap-[4px] px-[12px] py-[6px] rounded-[24px]">
             <div className="w-[20px] h-[20px] flex items-center justify-center flex-shrink-0">
               <Image
@@ -97,7 +94,6 @@ export function CourseCard({
             </span>
           </div>
 
-          {/* Overlapping Student Avatars */}
           <div className="flex items-center">
             {course.studentAvatars.map((src, idx) => (
               <div
@@ -123,7 +119,6 @@ export function CourseCard({
           </div>
         </div>
 
-        {/* Price Row */}
         <div className="flex items-baseline mt-2">
           <span className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-primary-blue tracking-[-0.2px] leading-[1.2]">
             {course.price}

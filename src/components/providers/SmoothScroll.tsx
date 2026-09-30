@@ -13,7 +13,7 @@ declare global {
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.1,
+      lerp: 0.08,
       smoothWheel: true,
       autoResize: true,
     });
@@ -21,33 +21,15 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     lenis.on("scroll", ScrollTrigger.update);
 
-    const tick = (time: number) => {
+    const update = (time: number) => {
       lenis.raf(time * 1000);
     };
-
-    gsap.ticker.add(tick);
+    gsap.ticker.add(update);
     gsap.ticker.lagSmoothing(0);
 
-    // Watch for dynamic DOM height changes (e.g. tabs switching, expanding lists)
-    const resizeObserver = new ResizeObserver(() => {
-      lenis.resize();
-      ScrollTrigger.refresh();
-    });
-
-    if (document.body) {
-      resizeObserver.observe(document.body);
-    }
-
-    const handleResize = () => {
-      lenis.resize();
-      ScrollTrigger.refresh();
-    };
-    window.addEventListener("resize", handleResize);
-
     return () => {
-      window.removeEventListener("resize", handleResize);
-      resizeObserver.disconnect();
-      gsap.ticker.remove(tick);
+      gsap.ticker.remove(update);
+      lenis.off("scroll", ScrollTrigger.update);
       lenis.destroy();
       delete window.__lenis;
     };

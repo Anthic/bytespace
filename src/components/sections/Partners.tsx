@@ -21,19 +21,19 @@ export function Partners() {
 
       gsap.fromTo(
         ".partner-logo-item",
-        { autoAlpha: 0, y: 16 },
+        { opacity: 0, y: 16 },
         {
-          autoAlpha: 1,
+          opacity: 1,
           y: 0,
           duration: 0.6,
           stagger: 0.08,
           ease: "power2.out",
+          force3D: true,
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 90%",
             once: true,
           },
-          immediateRender: false,
         }
       );
     },
@@ -58,7 +58,7 @@ export function Partners() {
           {partnersData.map((logo) => (
             <div
               key={logo.id}
-              className="partner-logo-item flex items-center justify-center transition-all duration-300 hover:opacity-75 hover:scale-[1.03] select-none"
+              className="partner-logo-item flex items-center justify-center transition-opacity duration-300 hover:opacity-75 select-none"
               style={{
                 width: `${logo.width}px`,
                 height: `${logo.height}px`,

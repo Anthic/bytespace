@@ -22,37 +22,37 @@ export function CategoriesShowcase() {
 
       gsap.fromTo(
         headerRef.current,
-        { autoAlpha: 0, y: 25 },
+        { opacity: 0, y: 25 },
         {
-          autoAlpha: 1,
+          opacity: 1,
           y: 0,
           duration: 0.6,
           ease: "power2.out",
+          force3D: true,
           scrollTrigger: {
             trigger: headerRef.current,
             start: "top 85%",
             once: true,
           },
-          immediateRender: false,
         }
       );
 
       gsap.fromTo(
         ".category-box-item",
-        { autoAlpha: 0, y: 20, scale: 0.95 },
+        { opacity: 0, y: 20, scale: 0.95 },
         {
-          autoAlpha: 1,
+          opacity: 1,
           y: 0,
           scale: 1,
           duration: 0.5,
           stagger: 0.08,
           ease: "power2.out",
+          force3D: true,
           scrollTrigger: {
             trigger: cardsRef.current,
             start: "top 85%",
             once: true,
           },
-          immediateRender: false,
         }
       );
     },
@@ -67,7 +67,7 @@ export function CategoriesShowcase() {
       data-node-id="34:684"
     >
       <div className="w-full max-w-[1440px] px-6 sm:px-10 lg:px-12 flex flex-col items-center">
-        {/* Header Frame (Node 34:684: Frame 9) */}
+
         <div
           ref={headerRef}
           className="flex flex-col items-center text-center max-w-[920px]"
@@ -86,7 +86,6 @@ export function CategoriesShowcase() {
           </p>
         </div>
 
-        {/* Categories Cards Row (Node 34:725: Frame 10) */}
         <div
           ref={cardsRef}
           className="mt-[44px] sm:mt-[56px] lg:mt-[68px] w-full max-w-[1202px] grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-[16px] sm:gap-[24px] lg:gap-[40px] justify-items-center"
@@ -96,10 +95,10 @@ export function CategoriesShowcase() {
           {categoriesListData.map((cat) => (
             <div
               key={cat.id}
-              className="category-box-item group w-[150px] sm:w-[167px] h-[150px] sm:h-[167px] bg-white border border-card-border rounded-[24px] flex flex-col items-center justify-center gap-[12px] p-[16px] cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:border-dark/30 hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)] select-none"
+              className="category-box-item group w-[150px] sm:w-[167px] h-[150px] sm:h-[167px] bg-white border border-card-border rounded-[24px] flex flex-col items-center justify-center gap-[12px] p-[16px] cursor-pointer transition-[box-shadow,border-color] duration-300 hover:border-dark/30 hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)] select-none"
               data-name="Categories_Card_1"
             >
-              {/* Lime Circular Icon Badge */}
+
               <div className="bg-electric-lime rounded-[40px] p-[12px] size-[56px] sm:size-[60px] flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
                 <div className="relative size-[32px] sm:size-[36px] flex items-center justify-center">
                   <Image
@@ -112,7 +111,6 @@ export function CategoriesShowcase() {
                 </div>
               </div>
 
-              {/* Category Name */}
               <span className="font-['Satoshi',sans-serif] font-medium text-[16px] sm:text-[20px] text-dark leading-[1.2] text-center whitespace-nowrap">
                 {cat.name}
               </span>

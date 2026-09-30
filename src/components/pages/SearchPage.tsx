@@ -14,20 +14,17 @@ export function SearchPage() {
   const heroContentRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
 
-  // Search & Filter States
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("featured");
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
   const [sortOption, setSortOption] = useState("Most relevant");
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Dropdown UI toggles
   const [showLevelDropdown, setShowLevelDropdown] = useState(false);
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
   const [showSortDropdown, setShowSortDropdown] = useState(false);
   const [showCourseTypeDropdown, setShowCourseTypeDropdown] = useState(false);
 
-  // Create an expanded pool of courses from the 6 base courses to populate multi-page Figma layout (18 cards total)
   const allCourses: CourseItem[] = useMemo(() => {
     return [
       ...coursesListData.map((c, i) => ({ ...c, id: `p1-${c.id}-${i}` })),
@@ -44,7 +41,6 @@ export function SearchPage() {
     ];
   }, []);
 
-  // Filtered courses
   const filteredCourses = useMemo(() => {
     return allCourses.filter((course) => {
       const matchesSearch =
@@ -62,7 +58,6 @@ export function SearchPage() {
     });
   }, [allCourses, searchQuery, selectedLevel]);
 
-  // Pagination (6 cards per page to match Figma 2-3 row grid layout)
   const itemsPerPage = 6;
   const totalPages = Math.max(1, Math.ceil(filteredCourses.length / itemsPerPage));
   const currentCourses = useMemo(() => {
@@ -70,7 +65,6 @@ export function SearchPage() {
     return filteredCourses.slice(start, start + itemsPerPage);
   }, [filteredCourses, currentPage]);
 
-  // GSAP Animations
   useGSAP(
     () => {
       const prefersReducedMotion = window.matchMedia(
@@ -78,14 +72,12 @@ export function SearchPage() {
       ).matches;
       if (prefersReducedMotion) return;
 
-      // Hero banner animation
       gsap.fromTo(
         heroContentRef.current,
         { autoAlpha: 0, y: 24 },
         { autoAlpha: 1, y: 0, duration: 0.7, ease: "power2.out" }
       );
 
-      // Cards Grid stagger animation
       if (cardsGridRef.current) {
         gsap.fromTo(
           cardsGridRef.current.children,
@@ -110,21 +102,20 @@ export function SearchPage() {
       data-node-id="55:117"
       data-name="Search Page"
     >
-      {/* 1. HERO SEARCH BANNER (Node 55:844) */}
+
       <section
         className="w-full bg-[#003be2] bg-grid-lines relative flex flex-col overflow-visible"
         data-node-id="55:844"
         data-name="Frame"
       >
-        {/* Reusable Navbar */}
+
         <Navbar />
 
-        {/* Hero Search Content (Node 55:857) */}
         <div
           ref={heroContentRef}
           className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 pt-[28px] sm:pt-[44px] pb-[60px] sm:pb-[80px] flex flex-col items-center text-center z-10"
         >
-          {/* Headline (Node 55:858) */}
+
           <h1
             className="font-['Poppins',var(--font-poppins)] font-semibold text-[30px] sm:text-[36px] lg:text-[40px] text-light-gray leading-[1.2] tracking-[-0.36px] max-w-[624px]"
             data-node-id="55:858"
@@ -132,12 +123,11 @@ export function SearchPage() {
             Find Your Next Course
           </h1>
 
-          {/* Search Bar Container (Node 55:859) */}
           <div
             className="mt-[32px] w-full max-w-[624px] flex flex-col sm:flex-row items-center gap-[12px] sm:gap-[16px]"
             data-node-id="55:859"
           >
-            {/* Search Input Box (Node 55:860) */}
+
             <div
               className="w-full sm:flex-1 h-[52px] bg-white rounded-full sm:rounded-[24px] px-[20px] sm:px-[24px] flex items-center gap-[10px] shadow-sm transition-all focus-within:ring-2 focus-within:ring-electric-lime"
               data-node-id="55:860"
@@ -173,7 +163,6 @@ export function SearchPage() {
               )}
             </div>
 
-            {/* Courses Dropdown Button (Node 55:863) */}
             <div className="relative w-full sm:w-auto">
               <button
                 type="button"
@@ -214,17 +203,16 @@ export function SearchPage() {
         </div>
       </section>
 
-      {/* 2. BODY CONTENT (Filters, Tabs, Courses Grid, Pagination) */}
       <section className="w-full bg-white py-[40px] sm:py-[56px] flex flex-col items-center">
         <div className="w-full max-w-[1248px] mx-auto px-4 sm:px-6 lg:px-6 flex flex-col">
-          {/* Top Filter and Sort Controls (Node 55:168) */}
+
           <div
             className="w-full flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-[16px]"
             data-node-id="55:168"
           >
-            {/* Left Filter Buttons Group (Node 55:169) */}
+
             <div className="flex flex-wrap items-center gap-[12px] sm:gap-[16px]">
-              {/* Filter Button (Node 55:170) */}
+
               <button
                 type="button"
                 onClick={() => {
@@ -247,7 +235,6 @@ export function SearchPage() {
                 </span>
               </button>
 
-              {/* Level Dropdown (Node 55:173) */}
               <div className="relative">
                 <button
                   type="button"
@@ -298,7 +285,6 @@ export function SearchPage() {
                 )}
               </div>
 
-              {/* Category Dropdown (Node 55:176) */}
               <div className="relative">
                 <button
                   type="button"
@@ -343,7 +329,6 @@ export function SearchPage() {
               </div>
             </div>
 
-            {/* Right Sort Dropdown (Node 55:179) */}
             <div className="relative self-end sm:self-auto">
               <button
                 type="button"
@@ -389,7 +374,6 @@ export function SearchPage() {
             </div>
           </div>
 
-          {/* Category Pills Slider / Row (Node 55:1819: Tab_Categories) */}
           <div
             className="mt-[28px] sm:mt-[32px] w-full flex items-center justify-start xl:justify-between gap-[8px] xl:gap-0 overflow-x-auto no-scrollbar py-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
@@ -418,7 +402,6 @@ export function SearchPage() {
             })}
           </div>
 
-          {/* 3. Course Cards Grid (Node 55:1843: Frame 8) */}
           <div
             ref={cardsGridRef}
             className="mt-[40px] sm:mt-[48px] w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[32px] sm:gap-x-[40px] gap-y-[32px] sm:gap-y-[40px] justify-items-center"
@@ -439,14 +422,13 @@ export function SearchPage() {
             )}
           </div>
 
-          {/* 4. Pagination Controls (Node 55:834) */}
           {totalPages > 1 && (
             <div
               className="mt-[56px] sm:mt-[64px] flex items-center justify-center gap-[12px] sm:gap-[16px]"
               data-node-id="55:834"
               data-name="Pagination"
             >
-              {/* Previous Page Button (Node 55:835) */}
+
               <button
                 type="button"
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
@@ -468,7 +450,6 @@ export function SearchPage() {
                 />
               </button>
 
-              {/* Page Number Buttons (Node 55:837 - 55:841) */}
               {[1, 2, 3, 4, 5].map((pageNum) => {
                 const isSelected = currentPage === pageNum;
                 return (
@@ -487,7 +468,6 @@ export function SearchPage() {
                 );
               })}
 
-              {/* Next Page Button (Node 55:842) */}
               <button
                 type="button"
                 onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
@@ -513,7 +493,6 @@ export function SearchPage() {
         </div>
       </section>
 
-      {/* 5. FOOTER (Node 78:1408) */}
       <Footer />
     </div>
   );
