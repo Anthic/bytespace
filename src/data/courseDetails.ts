@@ -58,6 +58,25 @@ export interface CourseDetailsData {
       percentage: number;
     };
   };
+  reviewsTabContent: {
+    title: string;
+    description: string;
+    averageRating: string;
+    breakdown: {
+      stars: number;
+      count: number;
+      percentage: number;
+    }[];
+    reviews: {
+      id: string;
+      name: string;
+      role: string;
+      avatar: string;
+      rating: number;
+      timeAgo: string;
+      content: string;
+    }[];
+  };
   lessonsSummary: {
     totalLessons: string;
     totalDuration: string;
@@ -168,6 +187,61 @@ export const courseDetailsData: CourseDetailsData = {
       label: "Learning Progress",
       percentage: 55,
     },
+  },
+  reviewsTabContent: {
+    title: "What Learners Are Saying",
+    description:
+      "Discover what our learners have to say about their experience with 'Build Digital Assets: A Comprehensive Guide.' Read reviews and ratings from individuals who have embarked on the transformative journey of mastering digital asset creation.",
+    averageRating: "4.7",
+    breakdown: [
+      { stars: 5, count: 720, percentage: 92.28 },
+      { stars: 4, count: 120, percentage: 36.49 },
+      { stars: 3, count: 21, percentage: 9.47 },
+      { stars: 2, count: 12, percentage: 3.51 },
+      { stars: 1, count: 16, percentage: 5.26 },
+    ],
+    reviews: [
+      {
+        id: "rev-1",
+        name: "PurePearl Studio",
+        role: "UI/UX Designer",
+        avatar: "/images/course-details/reviewer-1.png",
+        rating: 5,
+        timeAgo: "a year ago",
+        content:
+          '"The course provided me with a comprehensive understanding of digital asset creation. The lessons were in-depth, practical, and immediately applicable to my work. Highly recommended!"',
+      },
+      {
+        id: "rev-2",
+        name: "Albert Flores",
+        role: "UI/UX Designer",
+        avatar: "/images/course-details/reviewer-2.png",
+        rating: 5,
+        timeAgo: "a year ago",
+        content:
+          "This course transformed my approach to digital design. The combination of theory, hands-on exercises, and real-world applications made it a truly enriching experience. Excited to implement what I've learned!",
+      },
+      {
+        id: "rev-3",
+        name: "Cody Fisher",
+        role: "UI/UX Designer",
+        avatar: "/images/course-details/reviewer-3.png",
+        rating: 5,
+        timeAgo: "a year ago",
+        content:
+          "The project showcase and critique module created a collaborative environment where I could showcase my work, receive valuable feedback, and refine my skills. It added a unique and valuable dimension to the learning process.",
+      },
+      {
+        id: "rev-4",
+        name: "Brooklyn Simmons",
+        role: "UI/UX Designer",
+        avatar: "/images/course-details/reviewer-4.png",
+        rating: 5,
+        timeAgo: "a year ago",
+        content:
+          "The lessons on optimizing digital assets for various platforms were particularly insightful. The course adapts to the evolving digital landscape, and the engaging content kept me motivated throughout.",
+      },
+    ],
   },
   lessonsSummary: {
     totalLessons: "112 Lessons",

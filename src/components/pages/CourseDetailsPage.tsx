@@ -14,6 +14,7 @@ export function CourseDetailsPage() {
   const tabsRef = useRef<HTMLDivElement>(null);
   const [bannerHeight, setBannerHeight] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState("About");
+  const [reviewRatingFilter, setReviewRatingFilter] = useState<string | number>("all");
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [copiedShare, setCopiedShare] = useState(false);
 
@@ -38,6 +39,27 @@ export function CourseDetailsPage() {
       clearTimeout(timer);
     };
   }, []);
+
+  // Ensure Lenis and page scroll limit immediately recalculate when switching tabs
+  React.useEffect(() => {
+    const notifyResize = () => {
+      if (typeof window !== "undefined") {
+        window.__lenis?.resize();
+        window.dispatchEvent(new Event("resize"));
+      }
+    };
+
+    notifyResize();
+    const t1 = setTimeout(notifyResize, 50);
+    const t2 = setTimeout(notifyResize, 200);
+    const t3 = setTimeout(notifyResize, 500);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, [activeTab, reviewRatingFilter]);
 
   const handleShare = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -481,32 +503,217 @@ export function CourseDetailsPage() {
                 </div>
               )}
 
-              {/* Reviews Tab Content */}
+              {/* Reviews Tab Content (Node 60:1291) */}
               {activeTab === "Reviews" && (
                 <div
-                  className="mt-[32px] sm:mt-[40px] flex flex-col gap-[24px] max-w-[723px]"
+                  className="mt-[32px] sm:mt-[40px] flex flex-col gap-[24px] items-start"
+                  data-node-id="60:1291"
                   data-name="Reviews Tab Content"
                 >
-                  <h2 className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-dark tracking-[-0.2px] leading-[1.2]">
-                    Student Reviews
+                  {/* Heading: What Learners Are Saying */}
+                  <h2
+                    className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2]"
+                    data-node-id="60:1292"
+                  >
+                    {courseDetailsData.reviewsTabContent.title}
                   </h2>
-                  <div className="flex items-center gap-[16px] p-[20px] rounded-[16px] bg-[#f5f5f6] border border-[#ced0d3]">
-                    <div className="text-center pr-4 border-r border-[#ced0d3]">
-                      <span className="font-['Poppins',var(--font-poppins)] font-bold text-[36px] text-dark leading-none">
-                        4.8
+                  <p
+                    className="font-['Satoshi',sans-serif] text-[16px] text-[#4b4c53] leading-[1.6] max-w-[723px]"
+                    data-node-id="60:1293"
+                  >
+                    {courseDetailsData.reviewsTabContent.description}
+                  </p>
+
+                  {/* Ratings Overview Card (Node 60:1294) */}
+                  <div
+                    className="backdrop-blur-[10px] bg-white border border-[#ced0d3] border-solid flex flex-col sm:flex-row items-center gap-[24px] p-[24px] sm:p-[40px] rounded-[16px] w-full max-w-[723px] shadow-xs"
+                    data-node-id="60:1294"
+                  >
+                    {/* Left: Ratings Box (Node 60:1295) */}
+                    <div
+                      className="bg-[#d4fb20] flex flex-col items-center justify-center p-[24px] sm:p-[40px] rounded-[8px] shrink-0 text-[#242528] w-full sm:w-[136px] sm:h-[136px]"
+                      data-node-id="60:1295"
+                    >
+                      <span
+                        className="font-['Satoshi',sans-serif] font-medium text-[14px] leading-[1.2]"
+                        data-node-id="60:1296"
+                      >
+                        Ratings
                       </span>
-                      <p className="font-['Satoshi',sans-serif] text-[13px] text-[#4b4c53] mt-1">
-                        out of 5
-                      </p>
+                      <span
+                        className="font-['Poppins',var(--font-poppins)] font-semibold text-[36px] tracking-[-0.36px] leading-[1.2]"
+                        data-node-id="60:1297"
+                      >
+                        {courseDetailsData.reviewsTabContent.averageRating}
+                      </span>
                     </div>
-                    <div className="flex flex-col gap-1">
-                      <div className="flex items-center gap-1 text-electric-lime">
-                        {"★".repeat(5)}
-                      </div>
-                      <p className="font-['Satoshi',sans-serif] text-[15px] text-[#4b4c53]">
-                        Based on 172 verified student ratings
-                      </p>
+
+                    {/* Right: Breakdown Rows (Node 60:1298) */}
+                    <div
+                      className="flex flex-col gap-[8px] sm:gap-[6px] w-full flex-1"
+                      data-node-id="60:1298"
+                    >
+                      {courseDetailsData.reviewsTabContent.breakdown.map((item) => (
+                        <div
+                          key={item.stars}
+                          className="flex items-center gap-[12px] sm:gap-[16px] w-full"
+                        >
+                          {/* Progress Bar */}
+                          <div className="flex-1 h-[8px] bg-[#e5e6e8] rounded-[24px] overflow-hidden relative">
+                            <div
+                              className="h-full bg-[#d4fb20] rounded-[24px] transition-all duration-500"
+                              style={{ width: `${item.percentage}%` }}
+                            />
+                          </div>
+
+                          {/* 5 Stars display */}
+                          <div className="flex items-center gap-[4px] shrink-0">
+                            {[...Array(5)].map((_, i) => (
+                              <div
+                                key={i}
+                                className="w-[18px] sm:w-[24px] h-[18px] sm:h-[24px] relative"
+                              >
+                                <Image
+                                  src="/icons/course-details/star-filled.svg"
+                                  alt="star"
+                                  width={24}
+                                  height={24}
+                                  className="w-full h-full object-contain"
+                                />
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Count */}
+                          <span className="font-['Satoshi',sans-serif] text-[16px] text-[#4b4c53] text-right w-[40px] shrink-0 leading-[1.6]">
+                            {item.count}
+                          </span>
+                        </div>
+                      ))}
                     </div>
+                  </div>
+
+                  {/* Individual Reviews Heading (Node 60:1354) */}
+                  <h2
+                    className="font-['Poppins',var(--font-poppins)] font-semibold text-[20px] text-[#242528] tracking-[-0.2px] leading-[1.2] pt-[8px]"
+                    data-node-id="60:1354"
+                  >
+                    Individual Reviews:
+                  </h2>
+
+                  {/* Filter Pills Row (Node 60:1355) */}
+                  <div
+                    className="flex flex-wrap gap-[12px] sm:gap-[16px] items-center w-full max-w-[723px]"
+                    data-node-id="60:1355"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setReviewRatingFilter("all")}
+                      className={`px-[16px] py-[12px] rounded-[24px] font-['Satoshi',sans-serif] text-[15px] sm:text-[16px] font-medium leading-[1.2] transition-all cursor-pointer select-none ${
+                        reviewRatingFilter === "all"
+                          ? "bg-[#d4fb20] text-[#242528] shadow-xs"
+                          : "bg-[#f5f5f6] text-[#4b4c53] hover:bg-[#eaebee] hover:text-[#242528]"
+                      }`}
+                      data-node-id="60:1356"
+                    >
+                      All rating
+                    </button>
+
+                    {[5, 4, 3, 2, 1].map((stars) => {
+                      const isActive = reviewRatingFilter === stars;
+                      return (
+                        <button
+                          key={stars}
+                          type="button"
+                          onClick={() => setReviewRatingFilter(stars)}
+                          className={`px-[16px] py-[12px] rounded-[24px] flex items-center gap-[4px] font-['Satoshi',sans-serif] text-[15px] sm:text-[16px] font-medium leading-[1.2] transition-all cursor-pointer select-none ${
+                            isActive
+                              ? "bg-[#d4fb20] text-[#242528] shadow-xs"
+                              : "bg-[#f5f5f6] text-[#4b4c53] hover:bg-[#eaebee] hover:text-[#242528]"
+                          }`}
+                        >
+                          <div className="w-[20px] h-[20px] relative">
+                            <Image
+                              src="/icons/course-details/star-filled.svg"
+                              alt="star"
+                              width={20}
+                              height={20}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <span>{stars}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Review Cards List (Node 60:1373, 60:1389, etc.) */}
+                  <div className="flex flex-col gap-[20px] sm:gap-[24px] w-full max-w-[723px]">
+                    {courseDetailsData.reviewsTabContent.reviews
+                      .filter((rev) =>
+                        reviewRatingFilter === "all"
+                          ? true
+                          : rev.rating === reviewRatingFilter
+                      )
+                      .map((rev) => (
+                        <div
+                          key={rev.id}
+                          className="border border-[#ced0d3] bg-white rounded-[24px] p-[24px] sm:p-[40px] flex flex-col gap-[20px] sm:gap-[24px] shadow-xs"
+                        >
+                          {/* Header Row */}
+                          <div className="flex items-start justify-between gap-[16px] w-full">
+                            <div className="flex flex-col gap-[16px] sm:gap-[20px]">
+                              <div className="flex items-center gap-[12px]">
+                                <div className="w-[48px] sm:w-[52px] h-[48px] sm:h-[52px] rounded-full overflow-hidden shrink-0 relative bg-light-gray">
+                                  <Image
+                                    src={rev.avatar}
+                                    alt={rev.name}
+                                    width={52}
+                                    height={52}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </div>
+                                <div className="flex flex-col">
+                                  <h4 className="font-['Satoshi',sans-serif] font-medium text-[17px] sm:text-[18px] text-[#242528] leading-[1.2]">
+                                    {rev.name}
+                                  </h4>
+                                  <p className="font-['Satoshi',sans-serif] text-[15px] sm:text-[16px] text-[#4b4c53] leading-[1.6]">
+                                    {rev.role}
+                                  </p>
+                                </div>
+                              </div>
+
+                              {/* Stars */}
+                              <div className="flex items-center gap-[4px]">
+                                {[...Array(rev.rating)].map((_, i) => (
+                                  <div
+                                    key={i}
+                                    className="w-[20px] sm:w-[24px] h-[20px] sm:h-[24px] relative"
+                                  >
+                                    <Image
+                                      src="/icons/course-details/star-filled.svg"
+                                      alt="star"
+                                      width={24}
+                                      height={24}
+                                      className="w-full h-full object-contain"
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* Date TimeAgo */}
+                            <span className="font-['Satoshi',sans-serif] text-[15px] sm:text-[16px] text-[#4b4c53] shrink-0 leading-[1.6]">
+                              {rev.timeAgo}
+                            </span>
+                          </div>
+
+                          {/* Review Content */}
+                          <p className="font-['Satoshi',sans-serif] text-[16px] text-[#4b4c53] leading-[1.6]">
+                            {rev.content}
+                          </p>
+                        </div>
+                      ))}
                   </div>
                 </div>
               )}
