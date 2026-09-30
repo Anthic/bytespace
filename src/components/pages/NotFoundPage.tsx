@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Navbar } from "@/src/components/layout/Navbar";
+import { Footer } from "@/src/components/layout/Footer";
 import { gsap, useGSAP } from "@/src/lib/gsap";
 
 export function NotFoundPage() {
@@ -26,8 +27,8 @@ export function NotFoundPage() {
         numberRef.current,
         {
           autoAlpha: 0,
-          scale: 0.88,
-          y: 40,
+          scale: 0.9,
+          y: 30,
         },
         {
           autoAlpha: 1,
@@ -42,7 +43,7 @@ export function NotFoundPage() {
         ".not-found-anim",
         {
           autoAlpha: 0,
-          y: 30,
+          y: 25,
         },
         {
           autoAlpha: 1,
@@ -55,7 +56,7 @@ export function NotFoundPage() {
 
       // 3. Subtle floating loop on 404 backdrop
       gsap.to(numberRef.current, {
-        y: "-=12",
+        y: "-=10",
         duration: 3.5,
         repeat: -1,
         yoyo: true,
@@ -69,95 +70,98 @@ export function NotFoundPage() {
   return (
     <div
       ref={containerRef}
-      data-node-id="63:409"
-      className="relative w-full min-h-screen bg-primary-blue overflow-x-hidden flex flex-col justify-between selection:bg-electric-lime selection:text-dark"
+      data-node-id="63:252"
+      className="relative w-full min-h-screen bg-white overflow-x-hidden flex flex-col selection:bg-electric-lime selection:text-dark"
     >
-      {/* Background Grid Pattern (100% full coverage matching Figma Group 4) */}
-      <div
-        className="absolute inset-0 pointer-events-none z-0 w-full h-full bg-grid-lines opacity-100"
-        aria-hidden="true"
-      />
-
-      {/* SVG Grid Accent overlay from Figma */}
-      <div
-        className="absolute inset-0 pointer-events-none z-0 w-full h-full overflow-hidden flex items-start justify-center opacity-30"
-        aria-hidden="true"
+      {/* ================= TOP BLUE 404 HERO SECTION (Figma Node 63:409) ================= */}
+      <section
+        data-node-id="63:409"
+        className="relative w-full bg-[#003be2] overflow-hidden min-h-[720px] md:min-h-[820px] xl:h-[957px] flex flex-col justify-between"
       >
-        <Image
-          src="/images/404/grid-bg.svg"
-          alt=""
-          width={1442}
-          height={1026}
-          className="w-full max-w-[1920px] h-full object-cover min-h-[900px]"
-          priority
+        {/* Full-bleed CSS Grid lines pattern */}
+        <div
+          className="absolute inset-0 pointer-events-none z-0 w-full h-full bg-grid-lines opacity-100"
+          aria-hidden="true"
         />
-      </div>
 
-      {/* Top Navigation Header (Figma node 78:2779) */}
-      <div className="relative z-30 w-full">
-        <Navbar />
-      </div>
-
-      {/* Center 404 Content Container */}
-      <main className="relative z-20 flex-1 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col items-center justify-center py-12 lg:py-20 select-none">
-        <div className="relative w-full flex flex-col items-center justify-center">
-          {/* Giant 404 Text Backdrop (Figma node 63:643) */}
-          <p
-            ref={numberRef}
-            data-node-id="63:643"
-            className="absolute left-1/2 -translate-x-1/2 -top-[90px] sm:-top-[130px] md:-top-[170px] lg:-top-[220px] xl:-top-[250px] font-poppins font-semibold text-[170px] sm:text-[250px] md:text-[340px] lg:text-[420px] xl:text-[480px] leading-none tracking-[-2px] sm:tracking-[-3px] lg:tracking-[-4.8px] text-transparent bg-clip-text pointer-events-none select-none z-0 whitespace-nowrap"
-            style={{
-              backgroundImage:
-                "linear-gradient(180deg, rgb(212, 251, 32) 0%, rgba(212, 251, 32, 0.96) 25%, rgba(212, 251, 32, 0.81) 50.5%, rgba(212, 251, 32, 0.61) 68%, rgba(255, 255, 255, 0) 100%)",
-            }}
-          >
-            404
-          </p>
-
-          {/* Foreground Text & Action CTA (Figma node 63:638) */}
-          <div
-            ref={contentRef}
-            data-node-id="63:638"
-            className="relative z-10 flex flex-col items-center text-center mt-[90px] sm:mt-[130px] md:mt-[160px] lg:mt-[180px] xl:mt-[200px] max-w-[935px]"
-          >
-            {/* Title (Figma node 63:639) */}
-            <h1
-              data-node-id="63:639"
-              className="not-found-anim font-poppins font-semibold text-[32px] sm:text-[46px] md:text-[58px] lg:text-[68px] xl:text-[72px] leading-[1.15] sm:leading-[1.2] text-white tracking-[-0.72px] text-center w-full"
-            >
-              The page you are looking for doesn’t exist
-            </h1>
-
-            {/* Subtitle (Figma node 63:640) */}
-            <p
-              data-node-id="63:640"
-              className="not-found-anim mt-[20px] sm:mt-[24px] lg:mt-[32px] font-satoshi font-normal text-[15px] sm:text-[16px] lg:text-[18px] leading-[1.6] text-subtext-gray text-center max-w-[620px]"
-            >
-              Try to use a correct url or go back to homepage to start again
-            </p>
-
-            {/* Back to Home Button CTA (Figma node 63:641) */}
-            <div className="not-found-anim mt-[28px] sm:mt-[32px]">
-              <Link
-                href="/"
-                data-node-id="63:641"
-                className="group relative inline-flex items-center justify-center bg-electric-lime hover:bg-[#cbfc01] text-dark font-satoshi font-medium text-[16px] sm:text-[18px] leading-[1.2] px-[24px] py-[12px] rounded-[24px] transition-all duration-200 shadow-md hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-electric-lime/40"
-              >
-                <span data-node-id="63:642" className="relative z-10">
-                  Back to Home
-                </span>
-              </Link>
-            </div>
+        {/* SVG Grid Overlay directly from Figma (Node 63:410) */}
+        <div
+          data-node-id="63:410"
+          className="absolute inset-0 pointer-events-none z-0 w-full h-[1024px] overflow-hidden flex items-start justify-center"
+          aria-hidden="true"
+        >
+          <div className="relative w-[1440px] h-[1024px] shrink-0">
+            <Image
+              src="/images/404/grid-bg.svg"
+              alt=""
+              width={1442}
+              height={1026}
+              className="w-full h-full object-cover"
+              priority
+            />
           </div>
         </div>
-      </main>
 
-      {/* Bottom spacer / subtle bar to balance viewport on extra tall screens */}
-      <footer className="relative z-20 w-full py-6 text-center">
-        <p className="font-satoshi text-[13px] text-white/40">
-          &copy; {new Date().getFullYear()} ByteSpace. All rights reserved.
+        {/* Header / Navigation (Figma Node 78:2779) */}
+        <div className="relative z-30 w-full">
+          <Navbar />
+        </div>
+
+        {/* Giant 404 Number (Figma Node 63:643) */}
+        <p
+          ref={numberRef}
+          data-node-id="63:643"
+          className="absolute left-1/2 -translate-x-1/2 font-poppins font-semibold leading-none tracking-[-2px] sm:tracking-[-3px] lg:tracking-[-4.8px] text-transparent bg-clip-text pointer-events-none select-none z-10 whitespace-nowrap text-[160px] sm:text-[240px] md:text-[340px] lg:text-[420px] xl:text-[480px] top-[140px] sm:top-[150px] xl:top-[160px]"
+          style={{
+            backgroundImage:
+              "linear-gradient(180deg, rgb(212, 251, 32) 0%, rgba(212, 251, 32, 0.96) 25%, rgba(212, 251, 32, 0.81) 50.5%, rgba(212, 251, 32, 0.61) 68%, rgba(255, 255, 255, 0) 100%)",
+          }}
+        >
+          404
         </p>
-      </footer>
+
+        {/* Center Content: Headline, Subtitle, CTA (Figma Node 63:638) */}
+        <div
+          ref={contentRef}
+          data-node-id="63:638"
+          className="relative z-20 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col items-center text-center mt-[180px] sm:mt-[220px] md:mt-[280px] lg:mt-[340px] xl:mt-0 xl:absolute xl:left-1/2 xl:-translate-x-1/2 xl:top-[521px] max-w-[935px] gap-[24px] sm:gap-[32px] pb-16 xl:pb-0"
+        >
+          {/* Main Headline (Figma Node 63:639) */}
+          <h1
+            data-node-id="63:639"
+            className="not-found-anim font-poppins font-semibold text-[32px] sm:text-[46px] md:text-[58px] lg:text-[68px] xl:text-[72px] leading-[1.2] text-white tracking-[-0.72px] text-center w-full max-w-[935px]"
+          >
+            The page you are looking for doesn’t exist
+          </h1>
+
+          {/* Subtitle (Figma Node 63:640) */}
+          <p
+            data-node-id="63:640"
+            className="not-found-anim font-satoshi font-normal text-[15px] sm:text-[16px] lg:text-[18px] leading-[1.6] text-[#e5e6e8] text-center max-w-[640px]"
+          >
+            Try to use a correct url or go back to homepage to start again
+          </p>
+
+          {/* Action CTA Button (Figma Node 63:641) */}
+          <div className="not-found-anim">
+            <Link
+              href="/"
+              data-node-id="63:641"
+              className="group inline-flex items-center justify-center bg-[#d4fb20] hover:bg-[#cbfc01] text-[#242528] font-satoshi font-medium text-[16px] sm:text-[18px] leading-[1.2] px-[24px] py-[12px] rounded-[24px] transition-all duration-200 shadow-md hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-electric-lime/40"
+            >
+              <span data-node-id="63:642" className="relative z-10 whitespace-nowrap">
+                Back to Home
+              </span>
+            </Link>
+          </div>
+        </div>
+
+        {/* Empty bottom space placeholder matching Figma 957px boundary */}
+        <div className="hidden xl:block h-[30px]" aria-hidden="true" />
+      </section>
+
+      {/* ================= BOTTOM WHITE FOOTER (Figma Node 78:1457) ================= */}
+      <Footer />
     </div>
   );
 }

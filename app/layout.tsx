@@ -22,8 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans bg-primary-blue text-white selection:bg-electric-lime selection:text-dark">
+    <html lang="en" className={`${poppins.variable} h-full antialiased`} suppressHydrationWarning>
+      <body 
+        className="min-h-full flex flex-col font-sans bg-primary-blue text-white selection:bg-electric-lime selection:text-dark"
+        suppressHydrationWarning
+      >
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
